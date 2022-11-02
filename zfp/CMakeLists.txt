@@ -26,7 +26,7 @@ set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --extended-lambda --expt-relaxed-const
 set(LIB_TYPE SHARED)
 
 #-----------
-option(USE_NVTX "Enable support for NVIDIA Tools Extension (NVTX)" ON)
+option(USE_NVTX "Enable support for NVIDIA Tools Extension (NVTX)" OFF)
 if(USE_NVTX)
   find_package(NVTX)
   if(NVTX_FOUND)

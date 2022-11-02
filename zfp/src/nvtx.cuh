@@ -5,6 +5,8 @@
 #ifndef __NVTX_H__
 #define __NVTX_H__
 
+#ifdef USE_NVTX
+
 #include <nvToolsExt.h>
 #include <nvToolsExtCuda.h>
 #include <sys/syscall.h>
@@ -16,10 +18,10 @@
 #define BLACK 0xff000000
 #define RED 0xffff0000
 #define GREEN 0xff00ff00
-#define BLUE 0xff0000ff
+#define _BLUE 0xff0000ff
 #define CYAN 0xff00ffff
 #define MAGENTA 0xffff00ff
-#define YELLOW 0xffffff00
+#define _YELLOW 0xffffff00
 
 // Additional colors
 #define MY_GREEN 0xFF0D804A
@@ -108,5 +110,18 @@ static nvtxEventAttributes_t nvtx_attribs = {0};
  * \param label     Stream name string
  */
 #define NVTX_NAME_STREAM(stream, label) nvtxNameCuStreamA(stream, label)
+
+#else // USE_NVTX
+
+// Do nothing when not using NVTX.
+#define NVTX_PUSH_RANGE(label, hex)
+#define NVTX_PUSH_FUNCTION(hex)
+#define NVTX_POP_RANGE()
+#define NVTX_MARK(label, hex)
+#define NVTX_NAME_DEVICE(device, label)
+#define NVTX_NAME_THREAD(name)
+#define NVTX_NAME_STREAM(stream, label)
+
+#endif // USE_NVTX
 
 #endif /* __NVTX_H__ */

@@ -19,7 +19,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
 enable_language(CUDA)
 
-include_directories(/opt/zfp/include)
+include_directories(/opt/cusz-v100/API)
 
 set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --extended-lambda --expt-relaxed-constexpr -Wno-deprecated-declarations")
 
@@ -37,18 +37,23 @@ if(USE_NVTX)
   else()
     message(FATAL_ERROR "Could not find NVIDIA Tools Extension (NVTX)")
   endif()
-  set(NVTX_INCLUDE_DIRS ${NVTX_INCLUDE_DIR})
-  set(NVTX_LIBRARIES ${NVTX_LIBRARY})
-
 endif()
 #-----------
+
+
+set(NVTX_INCLUDE_DIRS ${NVTX_INCLUDE_DIR})
+set(NVTX_LIBRARIES ${NVTX_LIBRARY})
+
 
 add_executable(ex-api src/main.cu)
 target_link_libraries(ex-api
 	PUBLIC
-  /opt/zfp/lib/libzfp.so
-  /opt/zfp/lib/libzfp.so.1
-  /opt/zfp/lib/libzfp.so.1.0.0
+	/opt/cusz-v100/Release/libcompress.a 
+	/opt/cusz-v100/Release/libargp.a 
+	/opt/cusz-v100/Release/libpq.a 
+	/opt/cusz-v100/Release/libhuff.a 
+	/opt/cusz-v100/Release/libsp.a
+	${NVTX_LIBRARIES}
 	-lcuda
 	-lcusparse)
 set_target_properties(ex-api PROPERTIES CUDA_SEPARABLE_COMPILATION ON)

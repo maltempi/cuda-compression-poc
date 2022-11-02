@@ -9,12 +9,13 @@
 #include <chrono>
 #include <float.h>
 #include <limits.h>
-
+#include "nvtx.cuh"
 #include <math.h>
 
 #include "cuZFP.h"
 
 #include "zfp/bitstream.inl"
+
 
 using namespace std;
 using std::cout;
@@ -103,7 +104,10 @@ size_t compress(Data_t *data, size_t nx, size_t ny, size_t nz,
   zfp_stream_rewind_device(zfp->stream);
 
   /* compress array and output compressed stream */
+  NVTX_PUSH_RANGE("ZFP_COMPRESS", MY_YELLOW);
   zfpsize = cuda_compress(zfp, field);
+  NVTX_POP_RANGE();
+
   if (!zfpsize)
   {
     fprintf(stderr, "compression failed\n");
@@ -142,7 +146,9 @@ void decompress(Data_t *data, size_t compressed_size, size_t nx, size_t ny, size
   zfp_stream_rewind_device(zfp->stream);
 
   /* compress array and output compressed stream */
+  NVTX_PUSH_RANGE("ZFP_DECOMPRESS", MY_YELLOW);
   cuda_decompress(zfp, field);
+  NVTX_PUSH_RANGE("ZFP_DECOMPRESS", MY_YELLOW);
 
   /* clean up */
   zfp_field_free(field);
@@ -276,14 +282,18 @@ int main(int argc, char *argv[])
   chrono::steady_clock::time_point end;
 
   begin = std::chrono::steady_clock::now();
+  NVTX_PUSH_RANGE("START_COMPRESSION_METHOD", MY_ORANGE);
   size_t compressed_data_size = compress(data, nx, ny, nz, rate);
+  NVTX_POP_RANGE();
   end = std::chrono::steady_clock::now();
   cout << "Compression spent time: " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]\n";
   checkIfInputIsCorrupted(data->h_uncompressed_data, data->d_uncompressed_data, len);
 
-  cudaMalloc(&data->d_decompressed_data, len * sizeof(float));
   begin = std::chrono::steady_clock::now();
+  NVTX_PUSH_RANGE("START_DECOMPRESSION_METHOD", MY_ORANGE);
+  cudaMalloc(&data->d_decompressed_data, len * sizeof(float));
   decompress(data, compressed_data_size, nx, ny, nz, rate);
+  NVTX_POP_RANGE();
   end = std::chrono::steady_clock::now();
   cout << "Decompression spent time: " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]\n";
 
