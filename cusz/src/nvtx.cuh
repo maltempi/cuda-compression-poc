@@ -10,17 +10,6 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 
-// Basic colors
-#define WHITE 0xffffffff
-#define GRAY 0xff707070
-#define BLACK 0xff000000
-#define RED 0xffff0000
-#define GREEN 0xff00ff00
-#define BLUE 0xff0000ff
-#define CYAN 0xff00ffff
-#define MAGENTA 0xffff00ff
-#define YELLOW 0xffffff00
-
 // Additional colors
 #define MY_GREEN 0xFF0D804A
 #define MY_PURPLE 0xFF410D80

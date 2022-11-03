@@ -29,7 +29,7 @@ typedef struct
     float *d_decompressed_data;
     uint8_t *h_compressed_data;
     uint8_t *d_compressed_data;
-    float eb;
+    double eb;
     size_t uncompressed_len;
     size_t compressed_len;
     cusz::Header header;
@@ -167,12 +167,12 @@ int main(int argc, char *argv[])
     size_t len = nx * ny * nz;
     string inputFilepath = "/opt/zfp/bin/hurr-CLOUDf48-500x500x100";
     bool dumpData = true;
-    int rate = 8;
 
-    Data_t *data;
-    data->eb = 1.4e-4;
+    Data_t _data;
+    Data_t *data = &_data;
+
     data->uncompressed_len = len;
-
+    data->eb = 1.4e-4;
     cudaMallocHost(&data->h_uncompressed_data, len * sizeof(float));
     readInputDataFromFile(inputFilepath, data->h_uncompressed_data, len);
 
