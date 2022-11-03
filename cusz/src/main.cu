@@ -33,6 +33,7 @@ typedef struct
     size_t uncompressed_len;
     size_t compressed_len;
     cusz::Header header;
+    char* mode;
 } Data_t;
 
 void compress(Data_t *data, size_t nx, size_t ny, size_t nz, cudaStream_t stream)
@@ -43,7 +44,7 @@ void compress(Data_t *data, size_t nx, size_t ny, size_t nz, cudaStream_t stream
     Compressor *compressor = new Compressor;
     cusz::TimeRecord timerecord;
     cusz::Context *ctx = new cusz::Context();
-    ctx->set_len(nx, ny, nz, 1).set_eb(data->eb).set_control_string("mode=r2r");
+    ctx->set_len(nx, ny, nz, 1).set_eb(data->eb).set_control_string(data->mode);
     ctx->device = 0;
 
     cusz::core_compress(compressor, ctx,                                             // compressor & config
@@ -133,7 +134,7 @@ print_error(const void *fin, const void *fout, size_t n)
     erms = sqrt(erms / n);
     ermsn = erms / (fmax - fmin);
     psnr = 20 * log10((fmax - fmin) / (2 * erms));
-    fprintf(stderr, "\n\n Stats = rmse=%.4g nrmse=%.4g maxe=%.4g psnr=%.2f\n\n", erms, ermsn, emax, psnr);
+    fprintf(stderr, "-> Stats = rmse=%.4g nrmse=%.4g maxe=%.4g psnr=%.2f\n\n", erms, ermsn, emax, psnr);
 }
 
 void readInputDataFromFile(string filepath, float *h_array, size_t len)
@@ -150,6 +151,7 @@ void readInputDataFromFile(string filepath, float *h_array, size_t len)
 
 void exportData(string path, void *h_data, int data_size, size_t len)
 {
+    cout << "Dumping data in " << path << "\n";
     auto file = fopen(path.c_str(), "wb");
     fwrite(h_data, data_size, len, file);
     fclose(file);
@@ -157,6 +159,9 @@ void exportData(string path, void *h_data, int data_size, size_t len)
 
 int main(int argc, char *argv[])
 {
+    Data_t _data;
+    Data_t *data = &_data;
+
     cudaStream_t stream;
     cudaStreamCreate(&stream);
 
@@ -167,12 +172,21 @@ int main(int argc, char *argv[])
     size_t len = nx * ny * nz;
     string inputFilepath = "/opt/zfp/bin/hurr-CLOUDf48-500x500x100";
     bool dumpData = true;
-
-    Data_t _data;
-    Data_t *data = &_data;
-
     data->uncompressed_len = len;
-    data->eb = 1.4e-4;
+    data->eb = 1e-4;
+    data->mode = "mode=r2r"; // or "abs"
+
+
+    cout << "----------------------------------------------------------------------\n";
+    cout << "Using CUSZ for compression.\n";
+    cout << "----------------------------------------------------------------------\n";
+    cout << "nx=" << nx << " ny=" << ny << " nz=" << nz << " total=" << len << "\n";
+    cout << "eb=" << std::scientific << data->eb << "\n";
+    cout << data->mode << "\n";
+    cout << "compressing " << inputFilepath << "\n";
+    cout << "dump data " << inputFilepath << "\n";
+    cout << "----------------------------------------------------------------------\n";
+
     cudaMallocHost(&data->h_uncompressed_data, len * sizeof(float));
     readInputDataFromFile(inputFilepath, data->h_uncompressed_data, len);
 
@@ -182,14 +196,17 @@ int main(int argc, char *argv[])
     chrono::steady_clock::time_point begin;
     chrono::steady_clock::time_point end;
 
+    cout << "Starting Compression\n";
     begin = std::chrono::steady_clock::now();
     NVTX_PUSH_RANGE("START_COMPRESSION_METHOD", MY_ORANGE);
     compress(data, nx, ny, nz, stream);
     NVTX_POP_RANGE();
     end = std::chrono::steady_clock::now();
     cout << "Compression spent time: " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]\n";
+    cout << "----------------------------------------------------------------------\n";
     checkIfInputIsCorrupted(data->h_uncompressed_data, data->d_uncompressed_data, len);
 
+    cout << "Starting decompression\n";
     begin = std::chrono::steady_clock::now();
     NVTX_PUSH_RANGE("START_DECOMPRESSION_METHOD", MY_ORANGE);
     cudaMalloc(&data->d_decompressed_data, len * sizeof(float));
@@ -197,7 +214,9 @@ int main(int argc, char *argv[])
     NVTX_POP_RANGE();
     end = std::chrono::steady_clock::now();
     cout << "Decompression spent time: " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]\n";
+    cout << "----------------------------------------------------------------------\n";
 
+    cout << "Report:\n";
     cudaFreeHost(&data->h_decompressed_data);
     cudaMallocHost(&data->h_decompressed_data, len * sizeof(float));
     cudaMemcpy(data->h_decompressed_data, data->d_decompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
