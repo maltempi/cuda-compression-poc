@@ -19,6 +19,7 @@
 
 using Compressor = typename cusz::Framework<float>::LorenzoFeaturedCompressor;
 
+//#define MIN(x, y) ((x) < (y) ? (x) : (y))
 #define MAX(x, y) ((x) > (y) ? (x) : (y))
 
 typedef struct
@@ -33,7 +34,7 @@ typedef struct
     size_t uncompressed_len;
     size_t compressed_len;
     cusz::Header header;
-    char* mode;
+    char *mode;
 } Data_t;
 
 void compress(Data_t *data, size_t nx, size_t ny, size_t nz, cudaStream_t stream)
@@ -47,11 +48,20 @@ void compress(Data_t *data, size_t nx, size_t ny, size_t nz, cudaStream_t stream
     ctx->set_len(nx, ny, nz, 1).set_eb(data->eb).set_control_string(data->mode);
     ctx->device = 0;
 
+    float *d_uncompressed_copy;
+    cudaMalloc(&d_uncompressed_copy, sizeof(float) * nx * ny * nz);
+    cudaMemcpy(d_uncompressed_copy, data->d_uncompressed_data, sizeof(float) * nx * ny * nz, cudaMemcpyHostToDevice);
+
+    cout << "EB (before adjust_eb): " << ctx->eb << "\n";
+    cusz::Context::adjust_eb(ctx, d_uncompressed_copy);
+    cout << "EB (after adjust_eb): " << ctx->eb << "\n";
+
     cusz::core_compress(compressor, ctx,                                             // compressor & config
-                        data->d_uncompressed_data, uncompressed_alloclen,            // input
+                        d_uncompressed_copy, uncompressed_alloclen,                  // input
                         data->d_compressed_data, data->compressed_len, data->header, // output
                         stream, &timerecord);
 
+    cudaFree(&d_uncompressed_copy);
     delete compressor;
     delete ctx;
 }
@@ -173,9 +183,8 @@ int main(int argc, char *argv[])
     string inputFilepath = "/opt/zfp/bin/hurr-CLOUDf48-500x500x100";
     bool dumpData = true;
     data->uncompressed_len = len;
-    data->eb = 1e-4;
+    data->eb = 1e-4;         // 1e-4;
     data->mode = "mode=r2r"; // or "abs"
-
 
     cout << "----------------------------------------------------------------------\n";
     cout << "Using CUSZ for compression.\n";
@@ -222,6 +231,12 @@ int main(int argc, char *argv[])
     cudaMemcpy(data->h_decompressed_data, data->d_decompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
     print_error(data->h_uncompressed_data, data->h_decompressed_data, len);
 
+    cout << "GPU Metrics:\n";
+    cusz::QualityViewer::echo_metric_gpu(data->h_uncompressed_data, data->h_decompressed_data, len, size_t(data->compressed_len));
+    cout << "----------------\n";
+    cout << "CPU Metrics (sanity check w/ GPU):\n";
+    cusz::QualityViewer::echo_metric_cpu(data->h_decompressed_data, data->h_uncompressed_data, len, size_t(data->compressed_len), false);
+
     if (dumpData == true)
     {
         exportData("./decompressed-from-api", data->h_decompressed_data, sizeof(float), len);
@@ -229,6 +244,21 @@ int main(int argc, char *argv[])
         cudaMemcpy(data->h_compressed_data, data->d_compressed_data, data->compressed_len, cudaMemcpyDeviceToHost);
         exportData("./compressed-from-api", data->h_compressed_data, 1, data->compressed_len);
     }
+
+    float *cmd_result;
+    cudaMallocHost(&cmd_result, len * sizeof(float));
+    readInputDataFromFile("/opt/zfp/bin/hurr-CLOUDf48-500x500x100.cuszx", cmd_result, len);
+
+    int err = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (cmd_result[i] != data->h_decompressed_data[i])
+        {
+            err++;
+        }
+    }
+
+    cout << err << " errors\n";
 
     cudaFreeHost(&data->h_decompressed_data);
     cudaFree(&data->d_decompressed_data);
