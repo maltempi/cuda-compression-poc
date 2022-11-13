@@ -172,11 +172,11 @@ int checkIfInputIsCorrupted(float *h_input_before_compression, float *d_input_af
 
   if (errors > 0)
   {
-    cout << errors << " errors happened in the input data after compression\n";
+    fprintf(stderr, "%i errors happened in the input data after compression\n", errors);
   }
   else
   {
-    cout << "No errors have been found in the input data after compression.\n";
+    fprintf(stderr, "No errors have been found in the input data after compression.\n");
   }
 
   cudaFreeHost(&h_input_after_compression);
@@ -236,7 +236,7 @@ print_error(const void *fin, const void *fout, zfp_type type, size_t n)
   erms = sqrt(erms / n);
   ermsn = erms / (fmax - fmin);
   psnr = 20 * log10((fmax - fmin) / (2 * erms));
-  fprintf(stderr, "\n\n Stats = rmse=%.4g nrmse=%.4g maxe=%.4g psnr=%.2f\n\n", erms, ermsn, emax, psnr);
+  fprintf(stderr, "Stats = rmse=%.4g nrmse=%.4g maxe=%.4g psnr=%.2f\n\n", erms, ermsn, emax, psnr);
 }
 
 void readInputDataFromFile(string filepath, float *h_array, size_t len)
@@ -260,18 +260,48 @@ void exportData(string path, void *h_data, int data_size, size_t len)
 
 int main(int argc, char *argv[])
 {
-  for (int i = 0; i < 3; i++)
-  {
-    /* allocate array of floats */
-    size_t nx = 500;
-    size_t ny = 500;
-    size_t nz = 100;
-    size_t len = nx * ny * nz;
-    string inputFilepath = "/home/thiago.maltempi/workspace/cuda-compression-poc/hurr-CLOUDf48-500x500x100";
-    bool dumpData = true;
-    int rate = 8;
+  int gpus = 4;
+  int iterationsPerGpu = 10;
+  string inputFilepath = "../../hurr-CLOUDf48-500x500x100";
+  size_t nx = 500;
+  size_t ny = 500;
+  size_t nz = 100;
+  bool dumpData = false;
+  int rate = 8;
 
-    cout << "Rate = " << rate << "\n";
+  if (argc < 8 && argc > 1)
+  {
+    cout << "Wrong number of parameters. Expected parameters:\n";
+    cout << "ex-api ${rate} ${filepath} ${dim_x} ${dim_y} ${dim_z} ${number_of_gpus} ${iterationsPerGpu}";
+    return -1;
+  }
+  else if (argc > 1)
+  {
+    rate = std::atoi(argv[1]);
+    inputFilepath = argv[2];
+    nx = std::atoi(argv[3]);
+    ny = std::atoi(argv[4]);
+    nz = std::atoi(argv[5]);
+    gpus = std::atoi(argv[6]);
+    iterationsPerGpu = std::atoi(argv[7]);
+  }
+
+  fprintf(stderr, "----------ZFP-------------------\n");
+  fprintf(stderr, "Parameters\n");
+  fprintf(stderr, "Rate: %i\n", rate);
+  fprintf(stderr, "# GPUs: %i; # iterations per GPU: %i\n", gpus, iterationsPerGpu);
+  fprintf(stderr, "Input file path %s\n", inputFilepath.c_str());
+  fprintf(stderr, "Dims: (%li, %li, %li)\n", nx, ny, nz);
+  fprintf(stderr, "--------------------------------\n");
+
+  int gpu = 0;
+  for (int i = 0; i < gpus * iterationsPerGpu; i++)
+  {
+    fprintf(stderr, "Iteration #%i; GPU #%i\n", i, gpu);
+
+    cudaSetDevice(gpu);
+
+    size_t len = nx * ny * nz;
 
     Data_t *data;
 
@@ -289,7 +319,7 @@ int main(int argc, char *argv[])
     size_t compressed_data_size = compress(data, nx, ny, nz, rate);
     NVTX_POP_RANGE();
     end = std::chrono::steady_clock::now();
-    cout << "Compression spent time: " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]\n";
+    fprintf(stderr, "Compression spent time %li[µs]\n", chrono::duration_cast<chrono::microseconds>(end - begin).count());
     checkIfInputIsCorrupted(data->h_uncompressed_data, data->d_uncompressed_data, len);
 
     begin = std::chrono::steady_clock::now();
@@ -298,7 +328,7 @@ int main(int argc, char *argv[])
     decompress(data, compressed_data_size, nx, ny, nz, rate);
     NVTX_POP_RANGE();
     end = std::chrono::steady_clock::now();
-    cout << "Decompression spent time: " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]\n";
+    fprintf(stderr, "DEcompression spent time %li[µs]\n", chrono::duration_cast<chrono::microseconds>(end - begin).count());
 
     cudaFreeHost(&data->h_decompressed_data);
     cudaMallocHost(&data->h_decompressed_data, len * sizeof(float));
@@ -319,5 +349,16 @@ int main(int argc, char *argv[])
     cudaFree(data->d_uncompressed_data);
     cudaFreeHost(data->h_compressed_data);
     cudaFree(data->d_compressed_data);
+
+    if (gpu < gpus)
+    {
+      gpu++;
+    }
+    else
+    {
+      gpu = 0;
+    }
+
+    fprintf(stderr, "\n----------------------------------------\n\n");
   }
 }
