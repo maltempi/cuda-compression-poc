@@ -1,178 +1,244 @@
-/**
- * @file ex_api_core.cu
- * @author Jiannan Tian
- * @brief
- * @version 0.3
- * @date 2022-04-10
- *
- * (C) 2022 by Washington State University, Argonne National Laboratory
- *
- */
+#include <dirent.h>
+#include <iostream>
+#include <math.h>
+#include <sstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <fstream>
+#include <chrono>
+#include <float.h>
+#include <limits.h>
+#include <math.h>
+#include "nvtx.cuh"
 
 #include "api.hh"
 
 #include "cli/quality_viewer.hh"
 #include "cli/timerecord_viewer.hh"
 
-#include "nvtx.cuh"
+using Compressor = typename cusz::Framework<float>::LorenzoFeaturedCompressor;
 
-template <typename T>
-void f(std::string fname)
+//#define MIN(x, y) ((x) < (y) ? (x) : (y))
+#define MAX(x, y) ((x) > (y) ? (x) : (y))
+
+typedef struct
 {
-    using Compressor = typename cusz::Framework<T>::LorenzoFeaturedCompressor;
-
-    /*
-     * The predefined XFeatureCompressor is equivalent to the free form below.
-     *
-     * using Framework   = cusz::Framework<T>;
-     * using Combination = cusz::CompressorTemplate<
-     *     typename Framework::PredictorLorenzo,
-     *     typename Framework::SpCodecCSR,
-     *     typename Framework::CodecHuffman32,
-     *     typename Framework::CodecHuffman64>;
-     * using Compressor = cusz::Compressor<Combination>;
-     */
-
-    /* For demo, we use 3600x1800 CESM data. */
-    auto len = 500 * 500 * 100;
-
-    Compressor*  compressor;
+    float *h_uncompressed_data;
+    float *d_uncompressed_data;
+    float *h_decompressed_data;
+    float *d_decompressed_data;
+    uint8_t *h_compressed_data;
+    uint8_t *d_compressed_data;
+    double eb;
+    int device;
+    size_t uncompressed_len;
+    size_t compressed_len;
     cusz::Header header;
-    BYTE*        compressed;
-    size_t       compressed_len;
+    char *mode;
+} Data_t;
 
-    T *d_uncompressed, *h_uncompressed;
-    T *d_decompressed, *h_decompressed;
+void compress(Data_t *data, size_t nx, size_t ny, size_t nz, cudaStream_t stream)
+{
+    size_t uncompressed_alloclen = data->uncompressed_len * 1.03;
 
-    /* cuSZ requires a 3% overhead on device (not required on host). */
-    size_t uncompressed_alloclen = len * 1.03;
-    size_t decompressed_alloclen = uncompressed_alloclen;
+    // Defining cusz stuff
+    Compressor *compressor = new Compressor;
+    cusz::TimeRecord timerecord;
+    cusz::Context *ctx = new cusz::Context();
+    ctx->set_len(nx, ny, nz, 1).set_eb(data->eb).set_control_string(data->mode);
+    ctx->device = data->device;
 
-    /* code snippet for looking at the device array easily */
-    auto peek_devdata = [](T* d_arr, size_t num = 20) {
-        thrust::for_each(thrust::device, d_arr, d_arr + num, [=] __device__ __host__(const T i) { printf("%f\t", i); });
-        printf("\n");
-    };
+    float *d_uncompressed_copy;
+    cudaMalloc(&d_uncompressed_copy, sizeof(float) * nx * ny * nz);
+    cudaMemcpy(d_uncompressed_copy, data->d_uncompressed_data, sizeof(float) * nx * ny * nz, cudaMemcpyHostToDevice);
 
-    // clang-format off
-    cudaMalloc(     &d_uncompressed, sizeof(T) * uncompressed_alloclen );
-    cudaMallocHost( &h_uncompressed, sizeof(T) * len );
-    cudaMalloc(     &d_decompressed, sizeof(T) * decompressed_alloclen );
-    cudaMallocHost( &h_decompressed, sizeof(T) * len );
-    // clang-format on
+    cusz::Context::adjust_eb(ctx, d_uncompressed_copy);
+    fprintf(stderr, "EB (after adjust_eb): %lf\n", ctx->eb);
 
-    /* User handles loading from filesystem & transferring to device. */
-    io::read_binary_to_array(fname, h_uncompressed, len);
-    cudaMemcpy(d_uncompressed, h_uncompressed, sizeof(T) * len, cudaMemcpyHostToDevice);
+    cusz::core_compress(compressor, ctx,                                             // compressor & config
+                        d_uncompressed_copy, uncompressed_alloclen,                  // input
+                        data->d_compressed_data, data->compressed_len, data->header, // output
+                        stream, &timerecord);
 
-    /* a casual peek */
-    printf("peeking uncompressed data, 20 elements\n");
-    peek_devdata(d_uncompressed, 20);
+    cudaFree(d_uncompressed_copy);
+    delete compressor;
+}
 
-    cudaStream_t stream;
-    cudaStreamCreate(&stream);
+void decompress(Data_t *data, cudaStream_t stream)
+{
+    auto compressor = new Compressor;
+    cusz::TimeRecord timerecord;
+    size_t uncompressed_alloclen = data->uncompressed_len * 1.03;
 
-    compressor = new Compressor;
-    BYTE* exposed_compressed;
-    {
-        NVTX_PUSH_RANGE("START_COMPRESSION_METHOD", MY_ORANGE);
-        cusz::TimeRecord timerecord;
-        cusz::Context*   ctx;
+    cudaMalloc(&data->d_uncompressed_data, sizeof(float) * uncompressed_alloclen);
 
-        /*
-         * Two methods to build the configuration.
-         * Note that specifying type is not needed because of T in cusz::Framework<T>
-         */
+    fprintf(stderr, "Decompressing \n");
+    cusz::core_decompress(compressor, &data->header,
+                          data->d_compressed_data,   // input
+                          data->compressed_len,      // input len
+                          data->d_decompressed_data, // output
+                          uncompressed_alloclen,     // output len
+                          stream, &timerecord);
 
-        /* Method 1: Everthing is in string. */
-        // char const* config = "eb=2.4e-4,mode=r2r,len=3600x1800";
-        // ctx                = new cusz::Context(config);
-
-        /* Method 2: Numeric and string options are set separatedly. */
-        ctx = new cusz::Context();
-        ctx->set_len(500, 500, 100, 1)        // In this case, the last 2 arguments can be omitted.
-            .set_eb(1e-4)                   // numeric
-            .set_control_string("mode=r2r");  // string
-
-        float *d_uncompressed_copy;
-        cudaMalloc(&d_uncompressed_copy, sizeof(float) * len);
-        cudaMemcpy(d_uncompressed_copy, d_uncompressed, sizeof(float) * len, cudaMemcpyHostToDevice);
-
-        cout << "EB (before adjust_eb): " << ctx->eb << "\n";
-        cusz::Context::adjust_eb(ctx, d_uncompressed);
-        cout << "EB (after adjust_eb): " << ctx->eb << "\n";
-
-        NVTX_PUSH_RANGE("CUSZ_COMPRESS", MY_YELLOW);
-        cusz::core_compress(
-            compressor, ctx,                             // compressor & config
-            d_uncompressed_copy, uncompressed_alloclen,       // input
-            exposed_compressed, compressed_len, header,  // output
-            stream, &timerecord);
-        NVTX_POP_RANGE();
-
-        cudaFree(&d_uncompressed_copy);
-        NVTX_POP_RANGE();
-
-        /* User can interpret the collected time information in other ways. */
-        cusz::TimeRecordViewer::view_compression(&timerecord, len * sizeof(T), compressed_len);
-
-        /* verify header */
-        // clang-format off
-        printf("header.%-*s : %x\n",            12, "(addr)", &header);
-        printf("header.%-*s : %lu, %lu, %lu\n", 12, "{x,y,z}", header.x, header.y, header.z);
-        printf("header.%-*s : %lu\n",           12, "filesize", header.get_filesize());
-        // clang-format on
-    }
-
-    /* If needed, User should perform a memcopy to transfer `exposed_compressed` before `compressor` is destroyed. */
-    cudaMalloc(&compressed, compressed_len);
-    cudaMemcpy(compressed, exposed_compressed, compressed_len, cudaMemcpyDeviceToDevice);
-
-    /* release compressor */ delete compressor;
-
-    compressor = new Compressor;
-    {
-        NVTX_PUSH_RANGE("START_DECOMPRESSION_METHOD", MY_ORANGE);
-        cusz::TimeRecord timerecord;
-
-        NVTX_PUSH_RANGE("CUSZ_DECOMPRESS", MY_YELLOW);
-        cusz::core_decompress(
-            compressor, &header,                    // compressor & config
-            compressed, compressed_len,             // input
-            d_decompressed, decompressed_alloclen,  // output
-            stream, &timerecord);
-        NVTX_POP_RANGE();
-        NVTX_POP_RANGE();
-
-        /* User can interpret the collected time information in other ways. */
-        cusz::TimeRecordViewer::view_decompression(&timerecord, len * sizeof(T));
-    }
-
-    /* a casual peek */
-    printf("peeking decompressed data, 20 elements\n");
-    peek_devdata(d_decompressed, 20);
-
-    /* demo: offline checking (de)compression quality. */
-    /* load data again    */ cudaMemcpy(d_uncompressed, h_uncompressed, sizeof(T) * len, cudaMemcpyHostToDevice);
-    /* perform evaluation */ cusz::QualityViewer::echo_metric_gpu(d_decompressed, d_uncompressed, len, compressed_len);
-
-    cudaFree(compressed);
-    cudaFree(d_uncompressed);
-    cudaFree(h_decompressed);
-    cudaFree(h_decompressed);
-    cudaFree(h_uncompressed);
-    cudaFree(exposed_compressed);
+    // cusz::TimeRecordViewer::view_decompression(&timerecord, len * sizeof(float));
 
     delete compressor;
-
-    cudaStreamDestroy(stream);
 }
 
-int main(int argc, char** argv)
+static void
+print_error(const void *fin, const void *fout, size_t n)
 {
-    for (int i = 0 ; i < 3; i++) {
-        f<float>("/home/thiago.maltempi/workspace/cuda-compression-poc/hurr-CLOUDf48-500x500x100");
+    // Code from: https://github.com/LLNL/zfp/blob/fc96c9158e8befc227f9f46093f5e1b35723be02/utils/zfp.c#L30-L81
+    const float *f32i = (const float *)fin;
+    const float *f32o = (const float *)fout;
+    double fmin = +DBL_MAX;
+    double fmax = -DBL_MAX;
+    double erms = 0;
+    double ermsn = 0;
+    double emax = 0;
+    double psnr = 0;
+    size_t i;
+
+    for (i = 0; i < n; i++)
+    {
+        double d, val;
+        d = fabs((double)(f32i[i] - f32o[i]));
+        val = (double)f32i[i];
+        emax = MAX(emax, d);
+        erms += d * d;
+        fmin = MIN(fmin, val);
+        fmax = MAX(fmax, val);
     }
-    return 0;
+    erms = sqrt(erms / n);
+    ermsn = erms / (fmax - fmin);
+    psnr = 20 * log10((fmax - fmin) / (2 * erms));
+    fprintf(stderr, "-> Stats = rmse=%.4g nrmse=%.4g maxe=%.4g psnr=%.2f\n\n", erms, ermsn, emax, psnr);
 }
 
+void readInputDataFromFile(string filepath, float *h_array, size_t len)
+{
+    std::ifstream ifs(filepath.c_str(), std::ios::binary | std::ios::in);
+    if (not ifs.is_open())
+    {
+        std::cerr << "fail to open " << filepath << std::endl;
+        exit(1);
+    }
+    ifs.read(reinterpret_cast<char *>(h_array), std::streamsize(len * sizeof(float)));
+    ifs.close();
+}
+
+void exportData(string path, void *h_data, int data_size, size_t len)
+{
+    auto file = fopen(path.c_str(), "wb");
+    fwrite(h_data, data_size, len, file);
+    fclose(file);
+}
+
+int main(int argc, char *argv[])
+{
+    int gpus = 4;
+    int iterationsPerGpu = 10;
+    double eb = 1e-4;
+    char *mode = "mode=r2r"; // "abs" or "r2r"
+    string inputFilepath = "../../hurr-CLOUDf48-500x500x100";
+    size_t nx = 500;
+    size_t ny = 500;
+    size_t nz = 100;
+    bool dumpData = false;
+    bool printReport = false;
+
+    fprintf(stderr, "----------CUSZ------------------\n");
+    fprintf(stderr, "Parameters\n");
+    fprintf(stderr, "EB: %lf; Mode: %s\n", eb, mode);
+    fprintf(stderr, "# GPUs: %i; # iterations per GPU: %i\n", gpus, iterationsPerGpu);
+    fprintf(stderr, "Input file path %s\n", inputFilepath.c_str());
+    fprintf(stderr, "Dims: (%li, %li, %li)\n", nx, ny, nz);
+    fprintf(stderr, "--------------------------------\n");
+
+    int gpu = 0;
+    for (int i = 0; i < gpus * iterationsPerGpu; i++)
+    {
+        fprintf(stderr, "Iteration #%i; GPU #%i\n", i, gpu);
+
+        cudaSetDevice(gpu);
+
+        Data_t _data;
+        Data_t *data = &_data;
+        cudaStream_t stream;
+        cudaStreamCreate(&stream);
+
+        size_t len = nx * ny * nz;
+        data->uncompressed_len = len;
+        data->eb = eb;
+        data->mode = mode;
+        data->device = gpu;
+
+        cudaMallocHost(&data->h_uncompressed_data, len * sizeof(float));
+        readInputDataFromFile(inputFilepath, data->h_uncompressed_data, len);
+
+        cudaMalloc(&data->d_uncompressed_data, len * sizeof(float));
+        cudaMemcpy(data->d_uncompressed_data, data->h_uncompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
+
+        chrono::steady_clock::time_point begin;
+        chrono::steady_clock::time_point end;
+
+        begin = std::chrono::steady_clock::now();
+        NVTX_PUSH_RANGE("START_COMPRESSION_METHOD", MY_ORANGE);
+        compress(data, nx, ny, nz, stream);
+        NVTX_POP_RANGE();
+        end = std::chrono::steady_clock::now();
+        fprintf(stderr, "Compression spent time %li[µs]\n", chrono::duration_cast<chrono::microseconds>(end - begin).count());
+
+        fprintf(stderr, "Starting decompression\n");
+        begin = std::chrono::steady_clock::now();
+        NVTX_PUSH_RANGE("START_DECOMPRESSION_METHOD", MY_ORANGE);
+        cudaMalloc(&data->d_decompressed_data, len * sizeof(float));
+        decompress(data, stream);
+        NVTX_POP_RANGE();
+        end = std::chrono::steady_clock::now();
+        fprintf(stderr, "DEcompression spent time %li[µs]\n", chrono::duration_cast<chrono::microseconds>(end - begin).count());
+
+        if (dumpData)
+        {
+            exportData("./dump/decompressed-from-api_" + std::to_string(i), data->h_decompressed_data, sizeof(float), len);
+            cudaMallocHost(&data->h_compressed_data, data->compressed_len);
+            cudaMemcpy(data->h_compressed_data, data->d_compressed_data, data->compressed_len, cudaMemcpyDeviceToHost);
+            exportData("./dump/compressed-from-api_" + std::to_string(i), data->h_compressed_data, 1, data->compressed_len);
+        }
+
+        if (printReport)
+        {
+            fprintf(stderr, "Report:\n");
+            cudaFreeHost(&data->h_decompressed_data);
+            cudaMallocHost(&data->h_decompressed_data, len * sizeof(float));
+            cudaMemcpy(data->h_decompressed_data, data->d_decompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
+            print_error(data->h_uncompressed_data, data->h_decompressed_data, len);
+
+            fprintf(stderr, "CPU Metrics:\n");
+            cusz::QualityViewer::echo_metric_cpu(data->h_decompressed_data, data->h_uncompressed_data, len, size_t(data->compressed_len), false);
+        }
+
+        cudaFreeHost(&data->h_decompressed_data);
+        cudaFree(data->d_decompressed_data);
+        cudaFreeHost(&data->h_uncompressed_data);
+        cudaFree(data->d_uncompressed_data);
+        cudaFreeHost(&data->h_compressed_data);
+        cudaFree(data->d_compressed_data);
+        cudaStreamDestroy(stream);
+
+        if (gpus > 1)
+        {
+            if (gpu + 1 < gpus)
+            {
+                gpu++;
+            }
+            else
+            {
+                gpu = 0;
+            }
+        }
+
+        fprintf(stderr, "\n----------------------------------------\n\n");
+    }
+}

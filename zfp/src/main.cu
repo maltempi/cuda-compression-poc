@@ -350,13 +350,16 @@ int main(int argc, char *argv[])
     cudaFreeHost(data->h_compressed_data);
     cudaFree(data->d_compressed_data);
 
-    if (gpu < gpus)
+    if (gpus > 1)
     {
-      gpu++;
-    }
-    else
-    {
-      gpu = 0;
+      if (gpu + 1 < gpus)
+      {
+        gpu++;
+      }
+      else
+      {
+        gpu = 0;
+      }
     }
 
     fprintf(stderr, "\n----------------------------------------\n\n");
