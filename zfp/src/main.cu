@@ -16,7 +16,6 @@
 
 #include "zfp/bitstream.inl"
 
-
 using namespace std;
 using std::cout;
 typedef unsigned long long Word;
@@ -148,7 +147,7 @@ void decompress(Data_t *data, size_t compressed_size, size_t nx, size_t ny, size
   /* compress array and output compressed stream */
   NVTX_PUSH_RANGE("ZFP_DECOMPRESS", MY_YELLOW);
   cuda_decompress(zfp, field);
-  NVTX_PUSH_RANGE("ZFP_DECOMPRESS", MY_YELLOW);
+  NVTX_POP_RANGE();
 
   /* clean up */
   zfp_field_free(field);
@@ -261,59 +260,64 @@ void exportData(string path, void *h_data, int data_size, size_t len)
 
 int main(int argc, char *argv[])
 {
-  /* allocate array of floats */
-  size_t nx = 500;
-  size_t ny = 500;
-  size_t nz = 100;
-  size_t len = nx * ny * nz;
-  string inputFilepath = "/opt/zfp/bin/hurr-CLOUDf48-500x500x100";
-  bool dumpData = true;
-  int rate = 8;
-
-  Data_t *data;
-
-  cudaMallocHost(&data->h_uncompressed_data, len * sizeof(float));
-  readInputDataFromFile(inputFilepath, data->h_uncompressed_data, len);
-
-  cudaMalloc(&data->d_uncompressed_data, len * sizeof(float));
-  cudaMemcpy(data->d_uncompressed_data, data->h_uncompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
-
-  chrono::steady_clock::time_point begin;
-  chrono::steady_clock::time_point end;
-
-  begin = std::chrono::steady_clock::now();
-  NVTX_PUSH_RANGE("START_COMPRESSION_METHOD", MY_ORANGE);
-  size_t compressed_data_size = compress(data, nx, ny, nz, rate);
-  NVTX_POP_RANGE();
-  end = std::chrono::steady_clock::now();
-  cout << "Compression spent time: " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]\n";
-  checkIfInputIsCorrupted(data->h_uncompressed_data, data->d_uncompressed_data, len);
-
-  begin = std::chrono::steady_clock::now();
-  NVTX_PUSH_RANGE("START_DECOMPRESSION_METHOD", MY_ORANGE);
-  cudaMalloc(&data->d_decompressed_data, len * sizeof(float));
-  decompress(data, compressed_data_size, nx, ny, nz, rate);
-  NVTX_POP_RANGE();
-  end = std::chrono::steady_clock::now();
-  cout << "Decompression spent time: " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]\n";
-
-  cudaFreeHost(&data->h_decompressed_data);
-  cudaMallocHost(&data->h_decompressed_data, len * sizeof(float));
-  cudaMemcpy(data->h_decompressed_data, data->d_decompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
-  print_error(data->h_uncompressed_data, data->h_decompressed_data, zfp_type_float, len);
-
-  if (dumpData == true)
+  for (int i = 0; i < 3; i++)
   {
-    exportData("./decompressed-from-api", data->h_decompressed_data, sizeof(float), len);
-    cudaMallocHost(&data->h_compressed_data, compressed_data_size);
-    cudaMemcpy(data->h_compressed_data, data->d_compressed_data, compressed_data_size, cudaMemcpyDeviceToHost);
-    exportData("./compressed-from-api", data->h_compressed_data, 1, compressed_data_size);
-  }
+    /* allocate array of floats */
+    size_t nx = 500;
+    size_t ny = 500;
+    size_t nz = 100;
+    size_t len = nx * ny * nz;
+    string inputFilepath = "/home/thiago.maltempi/workspace/cuda-compression-poc/hurr-CLOUDf48-500x500x100";
+    bool dumpData = true;
+    int rate = 8;
 
-  cudaFreeHost(&data->h_decompressed_data);
-  cudaFree(&data->d_decompressed_data);
-  cudaFreeHost(&data->h_uncompressed_data);
-  cudaFree(&data->d_uncompressed_data);
-  cudaFreeHost(&data->h_compressed_data);
-  cudaFree(&data->d_compressed_data);
+    cout << "Rate = " << rate << "\n";
+
+    Data_t *data;
+
+    cudaMallocHost(&data->h_uncompressed_data, len * sizeof(float));
+    readInputDataFromFile(inputFilepath, data->h_uncompressed_data, len);
+
+    cudaMalloc(&data->d_uncompressed_data, len * sizeof(float));
+    cudaMemcpy(data->d_uncompressed_data, data->h_uncompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
+
+    chrono::steady_clock::time_point begin;
+    chrono::steady_clock::time_point end;
+
+    begin = std::chrono::steady_clock::now();
+    NVTX_PUSH_RANGE("START_COMPRESSION_METHOD", MY_ORANGE);
+    size_t compressed_data_size = compress(data, nx, ny, nz, rate);
+    NVTX_POP_RANGE();
+    end = std::chrono::steady_clock::now();
+    cout << "Compression spent time: " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]\n";
+    checkIfInputIsCorrupted(data->h_uncompressed_data, data->d_uncompressed_data, len);
+
+    begin = std::chrono::steady_clock::now();
+    NVTX_PUSH_RANGE("START_DECOMPRESSION_METHOD", MY_ORANGE);
+    cudaMalloc(&data->d_decompressed_data, len * sizeof(float));
+    decompress(data, compressed_data_size, nx, ny, nz, rate);
+    NVTX_POP_RANGE();
+    end = std::chrono::steady_clock::now();
+    cout << "Decompression spent time: " << chrono::duration_cast<chrono::microseconds>(end - begin).count() << "[µs]\n";
+
+    cudaFreeHost(&data->h_decompressed_data);
+    cudaMallocHost(&data->h_decompressed_data, len * sizeof(float));
+    cudaMemcpy(data->h_decompressed_data, data->d_decompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
+    print_error(data->h_uncompressed_data, data->h_decompressed_data, zfp_type_float, len);
+
+    if (dumpData == true)
+    {
+      exportData("./decompressed-from-api", data->h_decompressed_data, sizeof(float), len);
+      cudaMallocHost(&data->h_compressed_data, compressed_data_size);
+      cudaMemcpy(data->h_compressed_data, data->d_compressed_data, compressed_data_size, cudaMemcpyDeviceToHost);
+      exportData("./compressed-from-api", data->h_compressed_data, 1, compressed_data_size);
+    }
+
+    cudaFreeHost(data->h_decompressed_data);
+    cudaFree(data->d_decompressed_data);
+    cudaFreeHost(data->h_uncompressed_data);
+    cudaFree(data->d_uncompressed_data);
+    cudaFreeHost(data->h_compressed_data);
+    cudaFree(data->d_compressed_data);
+  }
 }

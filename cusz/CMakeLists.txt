@@ -37,12 +37,10 @@ if(USE_NVTX)
   else()
     message(FATAL_ERROR "Could not find NVIDIA Tools Extension (NVTX)")
   endif()
+  set(NVTX_INCLUDE_DIRS ${NVTX_INCLUDE_DIR})
+  set(NVTX_LIBRARIES ${NVTX_LIBRARY})
 endif()
 #-----------
-
-
-set(NVTX_INCLUDE_DIRS ${NVTX_INCLUDE_DIR})
-set(NVTX_LIBRARIES ${NVTX_LIBRARY})
 
 
 add_executable(ex-api src/main.cu)
@@ -53,7 +51,7 @@ target_link_libraries(ex-api
 	/opt/cusz-v100/Release/libpq.a 
 	/opt/cusz-v100/Release/libhuff.a 
 	/opt/cusz-v100/Release/libsp.a
-	${NVTX_LIBRARIES}
+  -lnvToolsExt
 	-lcuda
 	-lcusparse)
 set_target_properties(ex-api PROPERTIES CUDA_SEPARABLE_COMPILATION ON)

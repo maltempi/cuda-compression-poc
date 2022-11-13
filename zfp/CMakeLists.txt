@@ -26,7 +26,7 @@ set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --extended-lambda --expt-relaxed-const
 set(LIB_TYPE SHARED)
 
 #-----------
-option(USE_NVTX "Enable support for NVIDIA Tools Extension (NVTX)" OFF)
+option(USE_NVTX "Enable support for NVIDIA Tools Extension (NVTX)" ON)
 if(USE_NVTX)
   find_package(NVTX)
   if(NVTX_FOUND)
@@ -39,9 +39,9 @@ if(USE_NVTX)
   endif()
   set(NVTX_INCLUDE_DIRS ${NVTX_INCLUDE_DIR})
   set(NVTX_LIBRARIES ${NVTX_LIBRARY})
-
 endif()
 #-----------
+
 
 add_executable(ex-api src/main.cu)
 target_link_libraries(ex-api
@@ -49,6 +49,7 @@ target_link_libraries(ex-api
   /opt/zfp/lib/libzfp.so
   /opt/zfp/lib/libzfp.so.1
   /opt/zfp/lib/libzfp.so.1.0.0
+  -lnvToolsExt
 	-lcuda
 	-lcusparse)
 set_target_properties(ex-api PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
