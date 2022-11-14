@@ -86,36 +86,6 @@ void decompress(Data_t *data, cudaStream_t stream)
     delete compressor;
 }
 
-static void
-print_error(const void *fin, const void *fout, size_t n)
-{
-    // Code from: https://github.com/LLNL/zfp/blob/fc96c9158e8befc227f9f46093f5e1b35723be02/utils/zfp.c#L30-L81
-    const float *f32i = (const float *)fin;
-    const float *f32o = (const float *)fout;
-    double fmin = +DBL_MAX;
-    double fmax = -DBL_MAX;
-    double erms = 0;
-    double ermsn = 0;
-    double emax = 0;
-    double psnr = 0;
-    size_t i;
-
-    for (i = 0; i < n; i++)
-    {
-        double d, val;
-        d = fabs((double)(f32i[i] - f32o[i]));
-        val = (double)f32i[i];
-        emax = MAX(emax, d);
-        erms += d * d;
-        fmin = MIN(fmin, val);
-        fmax = MAX(fmax, val);
-    }
-    erms = sqrt(erms / n);
-    ermsn = erms / (fmax - fmin);
-    psnr = 20 * log10((fmax - fmin) / (2 * erms));
-    fprintf(stderr, "-> Stats = rmse=%.4g nrmse=%.4g maxe=%.4g psnr=%.2f\n\n", erms, ermsn, emax, psnr);
-}
-
 void readInputDataFromFile(string filepath, float *h_array, size_t len)
 {
     std::ifstream ifs(filepath.c_str(), std::ios::binary | std::ios::in);
@@ -213,7 +183,6 @@ int main(int argc, char *argv[])
             cudaFreeHost(&data->h_decompressed_data);
             cudaMallocHost(&data->h_decompressed_data, len * sizeof(float));
             cudaMemcpy(data->h_decompressed_data, data->d_decompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
-            print_error(data->h_uncompressed_data, data->h_decompressed_data, len);
 
             fprintf(stderr, "CPU Metrics:\n");
             cusz::QualityViewer::echo_metric_cpu(data->h_decompressed_data, data->h_uncompressed_data, len, size_t(data->compressed_len), false);
