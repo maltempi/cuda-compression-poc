@@ -267,8 +267,8 @@ int main(int argc, char *argv[])
   size_t ny = 500;
   size_t nz = 100;
   bool dumpData = false;
-  bool printReport = false;
-  int rate = 8;
+  bool printReport = true;
+  int rate = 4;
 
   fprintf(stderr, "----------ZFP-------------------\n");
   fprintf(stderr, "Parameters\n");

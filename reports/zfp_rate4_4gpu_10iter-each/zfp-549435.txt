@@ -1,0 +1,320 @@
+-- Found NVIDIA Tools Extension (NVTX): /usr/local/cuda/include
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/thiago.maltempi/workspace/cuda-compression-poc/zfp/build
+Scanning dependencies of target ex-api
+[ 33%] Building CUDA object CMakeFiles/ex-api.dir/src/main.cu.o
+/home/thiago.maltempi/workspace/cuda-compression-poc/zfp/src/main.cu(292): warning: variable "data" is used before its value is set
+
+/home/thiago.maltempi/workspace/cuda-compression-poc/zfp/src/main.cu(292): warning: variable "data" is used before its value is set
+
+[ 66%] Linking CUDA device code CMakeFiles/ex-api.dir/cmake_device_link.o
+[100%] Linking CUDA executable ex-api
+[100%] Built target ex-api
+go
+Collecting data...
+----------ZFP-------------------
+Parameters
+Rate: 4
+# GPUs: 4; # iterations per GPU: 10
+Input file path ../../hurr-CLOUDf48-500x500x100
+Dims: (500, 500, 100)
+--------------------------------
+Iteration #0; GPU #0
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #1; GPU #1
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #2; GPU #2
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #3; GPU #3
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #4; GPU #0
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #5; GPU #1
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #6; GPU #2
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #7; GPU #3
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #8; GPU #0
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #9; GPU #1
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #10; GPU #2
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #11; GPU #3
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #12; GPU #0
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #13; GPU #1
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #14; GPU #2
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #15; GPU #3
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #16; GPU #0
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #17; GPU #1
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #18; GPU #2
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #19; GPU #3
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #20; GPU #0
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #21; GPU #1
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #22; GPU #2
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #23; GPU #3
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #24; GPU #0
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #25; GPU #1
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #26; GPU #2
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #27; GPU #3
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #28; GPU #0
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #29; GPU #1
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #30; GPU #2
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #31; GPU #3
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #32; GPU #0
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #33; GPU #1
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #34; GPU #2
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #35; GPU #3
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #36; GPU #0
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #37; GPU #1
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #38; GPU #2
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Iteration #39; GPU #3
+No errors have been found in the input data after compression.
+Stats = rmse=3.348e-06 nrmse=0.001635 maxe=0.0003204 psnr=49.71
+
+
+----------------------------------------
+
+Processing events...
+Saving temporary "/tmp/nsys-report-d7c6-8d22-74ca-3fa0.qdstrm" file to disk...
+
+Creating final output files...
+Processing [0%                                                                 ]Processing [3%                                                                 ]Processing [==6%                                                               ]Processing [3%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [2%                                                                 ]Processing [====9%                                                             ]Processing [========17%                                                        ]Processing [=========18%                                                       ]Processing [=========19%                                                       ]Processing [====================35%                                            ]Processing [==============================50%                                  ]Processing [=======================================63%                         ]Processing [===============================================76%                 ]Processing [=======================================================88%         ]Processing [=============================================================96%   ]Processing [===============================================================100%]
+Saved report file to "/tmp/nsys-report-d7c6-8d22-74ca-3fa0.qdrep"
+Exporting 11429 events: [1%                                                    ]Exporting 11429 events: [2%                                                    ]Exporting 11429 events: [3%                                                    ]Exporting 11429 events: [4%                                                    ]Exporting 11429 events: [5%                                                    ]Exporting 11429 events: [=6%                                                   ]Exporting 11429 events: [=7%                                                   ]Exporting 11429 events: [==8%                                                  ]Exporting 11429 events: [==9%                                                  ]Exporting 11429 events: [==10%                                                 ]Exporting 11429 events: [==11%                                                 ]Exporting 11429 events: [===12%                                                ]Exporting 11429 events: [====13%                                               ]Exporting 11429 events: [====14%                                               ]Exporting 11429 events: [=====15%                                              ]Exporting 11429 events: [=====16%                                              ]Exporting 11429 events: [======17%                                             ]Exporting 11429 events: [======18%                                             ]Exporting 11429 events: [=======19%                                            ]Exporting 11429 events: [=======20%                                            ]Exporting 11429 events: [========21%                                           ]Exporting 11429 events: [========22%                                           ]Exporting 11429 events: [=========23%                                          ]Exporting 11429 events: [=========24%                                          ]Exporting 11429 events: [==========25%                                         ]Exporting 11429 events: [===========26%                                        ]Exporting 11429 events: [===========27%                                        ]Exporting 11429 events: [============28%                                       ]Exporting 11429 events: [============29%                                       ]Exporting 11429 events: [=============30%                                      ]Exporting 11429 events: [=============31%                                      ]Exporting 11429 events: [==============32%                                     ]Exporting 11429 events: [==============33%                                     ]Exporting 11429 events: [===============34%                                    ]Exporting 11429 events: [===============35%                                    ]Exporting 11429 events: [================36%                                   ]Exporting 11429 events: [================37%                                   ]Exporting 11429 events: [=================38%                                  ]Exporting 11429 events: [==================39%                                 ]Exporting 11429 events: [==================40%                                 ]Exporting 11429 events: [===================41%                                ]Exporting 11429 events: [===================42%                                ]Exporting 11429 events: [====================43%                               ]Exporting 11429 events: [====================44%                               ]Exporting 11429 events: [=====================45%                              ]Exporting 11429 events: [=====================46%                              ]Exporting 11429 events: [======================47%                             ]Exporting 11429 events: [======================48%                             ]Exporting 11429 events: [=======================49%                            ]Exporting 11429 events: [========================50%                           ]Exporting 11429 events: [========================51%                           ]Exporting 11429 events: [=========================52%                          ]Exporting 11429 events: [=========================53%                          ]Exporting 11429 events: [==========================54%                         ]Exporting 11429 events: [==========================55%                         ]Exporting 11429 events: [===========================56%                        ]Exporting 11429 events: [===========================57%                        ]Exporting 11429 events: [============================58%                       ]Exporting 11429 events: [============================59%                       ]Exporting 11429 events: [=============================60%                      ]Exporting 11429 events: [=============================61%                      ]Exporting 11429 events: [==============================62%                     ]Exporting 11429 events: [===============================63%                    ]Exporting 11429 events: [===============================64%                    ]Exporting 11429 events: [================================65%                   ]Exporting 11429 events: [================================66%                   ]Exporting 11429 events: [=================================67%                  ]Exporting 11429 events: [=================================68%                  ]Exporting 11429 events: [==================================69%                 ]Exporting 11429 events: [==================================70%                 ]Exporting 11429 events: [===================================71%                ]Exporting 11429 events: [===================================72%                ]Exporting 11429 events: [====================================73%               ]Exporting 11429 events: [====================================74%               ]Exporting 11429 events: [=====================================75%              ]Exporting 11429 events: [======================================76%             ]Exporting 11429 events: [======================================77%             ]Exporting 11429 events: [=======================================78%            ]Exporting 11429 events: [=======================================79%            ]Exporting 11429 events: [========================================80%           ]Exporting 11429 events: [========================================81%           ]Exporting 11429 events: [=========================================82%          ]Exporting 11429 events: [=========================================83%          ]Exporting 11429 events: [==========================================84%         ]Exporting 11429 events: [==========================================85%         ]Exporting 11429 events: [===========================================86%        ]Exporting 11429 events: [===========================================87%        ]Exporting 11429 events: [============================================88%       ]Exporting 11429 events: [=============================================89%      ]Exporting 11429 events: [=============================================90%      ]Exporting 11429 events: [==============================================91%     ]Exporting 11429 events: [==============================================92%     ]Exporting 11429 events: [===============================================93%    ]Exporting 11429 events: [===============================================94%    ]Exporting 11429 events: [================================================95%   ]Exporting 11429 events: [================================================96%   ]Exporting 11429 events: [=================================================97%  ]Exporting 11429 events: [=================================================98%  ]Exporting 11429 events: [==================================================99% ]Exporting 11429 events: [==================================================100%]
+
+Exported successfully to
+/tmp/nsys-report-d7c6-8d22-74ca-3fa0.txt
+Exporting 11429 events: [1%                                                    ]Exporting 11429 events: [2%                                                    ]Exporting 11429 events: [3%                                                    ]Exporting 11429 events: [4%                                                    ]Exporting 11429 events: [5%                                                    ]Exporting 11429 events: [=6%                                                   ]Exporting 11429 events: [=7%                                                   ]Exporting 11429 events: [==8%                                                  ]Exporting 11429 events: [==9%                                                  ]Exporting 11429 events: [==10%                                                 ]Exporting 11429 events: [==11%                                                 ]Exporting 11429 events: [===12%                                                ]Exporting 11429 events: [====13%                                               ]Exporting 11429 events: [====14%                                               ]Exporting 11429 events: [=====15%                                              ]Exporting 11429 events: [=====16%                                              ]Exporting 11429 events: [======17%                                             ]Exporting 11429 events: [======18%                                             ]Exporting 11429 events: [=======19%                                            ]Exporting 11429 events: [=======20%                                            ]Exporting 11429 events: [========21%                                           ]Exporting 11429 events: [========22%                                           ]Exporting 11429 events: [=========23%                                          ]Exporting 11429 events: [=========24%                                          ]Exporting 11429 events: [==========25%                                         ]Exporting 11429 events: [===========26%                                        ]Exporting 11429 events: [===========27%                                        ]Exporting 11429 events: [============28%                                       ]Exporting 11429 events: [============29%                                       ]Exporting 11429 events: [=============30%                                      ]Exporting 11429 events: [=============31%                                      ]Exporting 11429 events: [==============32%                                     ]Exporting 11429 events: [==============33%                                     ]Exporting 11429 events: [===============34%                                    ]Exporting 11429 events: [===============35%                                    ]Exporting 11429 events: [================36%                                   ]Exporting 11429 events: [================37%                                   ]Exporting 11429 events: [=================38%                                  ]Exporting 11429 events: [==================39%                                 ]Exporting 11429 events: [==================40%                                 ]Exporting 11429 events: [===================41%                                ]Exporting 11429 events: [===================42%                                ]Exporting 11429 events: [====================43%                               ]Exporting 11429 events: [====================44%                               ]Exporting 11429 events: [=====================45%                              ]Exporting 11429 events: [=====================46%                              ]Exporting 11429 events: [======================47%                             ]Exporting 11429 events: [======================48%                             ]Exporting 11429 events: [=======================49%                            ]Exporting 11429 events: [========================50%                           ]Exporting 11429 events: [========================51%                           ]Exporting 11429 events: [=========================52%                          ]Exporting 11429 events: [=========================53%                          ]Exporting 11429 events: [==========================54%                         ]Exporting 11429 events: [==========================55%                         ]Exporting 11429 events: [===========================56%                        ]Exporting 11429 events: [===========================57%                        ]Exporting 11429 events: [============================58%                       ]Exporting 11429 events: [============================59%                       ]Exporting 11429 events: [=============================60%                      ]Exporting 11429 events: [=============================61%                      ]Exporting 11429 events: [==============================62%                     ]Exporting 11429 events: [===============================63%                    ]Exporting 11429 events: [===============================64%                    ]Exporting 11429 events: [================================65%                   ]Exporting 11429 events: [================================66%                   ]Exporting 11429 events: [=================================67%                  ]Exporting 11429 events: [=================================68%                  ]Exporting 11429 events: [==================================69%                 ]Exporting 11429 events: [==================================70%                 ]Exporting 11429 events: [===================================71%                ]Exporting 11429 events: [===================================72%                ]Exporting 11429 events: [====================================73%               ]Exporting 11429 events: [====================================74%               ]Exporting 11429 events: [=====================================75%              ]Exporting 11429 events: [======================================76%             ]Exporting 11429 events: [======================================77%             ]Exporting 11429 events: [=======================================78%            ]Exporting 11429 events: [=======================================79%            ]Exporting 11429 events: [========================================80%           ]Exporting 11429 events: [========================================81%           ]Exporting 11429 events: [=========================================82%          ]Exporting 11429 events: [=========================================83%          ]Exporting 11429 events: [==========================================84%         ]Exporting 11429 events: [==========================================85%         ]Exporting 11429 events: [===========================================86%        ]Exporting 11429 events: [===========================================87%        ]Exporting 11429 events: [============================================88%       ]Exporting 11429 events: [=============================================89%      ]Exporting 11429 events: [=============================================90%      ]Exporting 11429 events: [==============================================91%     ]Exporting 11429 events: [==============================================92%     ]Exporting 11429 events: [===============================================93%    ]Exporting 11429 events: [===============================================94%    ]Exporting 11429 events: [================================================95%   ]Exporting 11429 events: [================================================96%   ]Exporting 11429 events: [=================================================97%  ]Exporting 11429 events: [=================================================98%  ]Exporting 11429 events: [==================================================99% ]Exporting 11429 events: [==================================================100%]
+
+Exported successfully to
+/tmp/nsys-report-d7c6-8d22-74ca-3fa0.json
+Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/zfp/build/report1.qdrep"
+Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/zfp/build/report1.txt"
+Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/zfp/build/report1.json"
+

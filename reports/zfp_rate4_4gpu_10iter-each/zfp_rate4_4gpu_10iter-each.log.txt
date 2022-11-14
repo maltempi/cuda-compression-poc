@@ -1,0 +1,213 @@
+-- The CUDA compiler identification is NVIDIA 11.2.152
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working CUDA compiler: /usr/local/cuda/bin/nvcc
+-- Check for working CUDA compiler: /usr/local/cuda/bin/nvcc -- works
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found NVTX: /usr/local/cuda/include  
+-- Found NVIDIA Tools Extension (NVTX): /usr/local/cuda/include
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/thiago.maltempi/workspace/cuda-compression-poc/zfp/build
+Scanning dependencies of target ex-api
+[ 33%] Building CUDA object CMakeFiles/ex-api.dir/src/main.cu.o
+/home/thiago.maltempi/workspace/cuda-compression-poc/zfp/src/main.cu(292): warning: variable "data" is used before its value is set
+
+/home/thiago.maltempi/workspace/cuda-compression-poc/zfp/src/main.cu(292): warning: variable "data" is used before its value is set
+
+[ 66%] Linking CUDA device code CMakeFiles/ex-api.dir/cmake_device_link.o
+[100%] Linking CUDA executable ex-api
+[100%] Built target ex-api
+go
+Collecting data...
+----------ZFP-------------------
+Parameters
+Rate: 4
+# GPUs: 4; # iterations per GPU: 10
+Input file path ../../hurr-CLOUDf48-500x500x100
+Dims: (500, 500, 100)
+--------------------------------
+Iteration #0; GPU #0
+
+----------------------------------------
+
+Iteration #1; GPU #1
+
+----------------------------------------
+
+Iteration #2; GPU #2
+
+----------------------------------------
+
+Iteration #3; GPU #3
+
+----------------------------------------
+
+Iteration #4; GPU #0
+
+----------------------------------------
+
+Iteration #5; GPU #1
+
+----------------------------------------
+
+Iteration #6; GPU #2
+
+----------------------------------------
+
+Iteration #7; GPU #3
+
+----------------------------------------
+
+Iteration #8; GPU #0
+
+----------------------------------------
+
+Iteration #9; GPU #1
+
+----------------------------------------
+
+Iteration #10; GPU #2
+
+----------------------------------------
+
+Iteration #11; GPU #3
+
+----------------------------------------
+
+Iteration #12; GPU #0
+
+----------------------------------------
+
+Iteration #13; GPU #1
+
+----------------------------------------
+
+Iteration #14; GPU #2
+
+----------------------------------------
+
+Iteration #15; GPU #3
+
+----------------------------------------
+
+Iteration #16; GPU #0
+
+----------------------------------------
+
+Iteration #17; GPU #1
+
+----------------------------------------
+
+Iteration #18; GPU #2
+
+----------------------------------------
+
+Iteration #19; GPU #3
+
+----------------------------------------
+
+Iteration #20; GPU #0
+
+----------------------------------------
+
+Iteration #21; GPU #1
+
+----------------------------------------
+
+Iteration #22; GPU #2
+
+----------------------------------------
+
+Iteration #23; GPU #3
+
+----------------------------------------
+
+Iteration #24; GPU #0
+
+----------------------------------------
+
+Iteration #25; GPU #1
+
+----------------------------------------
+
+Iteration #26; GPU #2
+
+----------------------------------------
+
+Iteration #27; GPU #3
+
+----------------------------------------
+
+Iteration #28; GPU #0
+
+----------------------------------------
+
+Iteration #29; GPU #1
+
+----------------------------------------
+
+Iteration #30; GPU #2
+
+----------------------------------------
+
+Iteration #31; GPU #3
+
+----------------------------------------
+
+Iteration #32; GPU #0
+
+----------------------------------------
+
+Iteration #33; GPU #1
+
+----------------------------------------
+
+Iteration #34; GPU #2
+
+----------------------------------------
+
+Iteration #35; GPU #3
+
+----------------------------------------
+
+Iteration #36; GPU #0
+
+----------------------------------------
+
+Iteration #37; GPU #1
+
+----------------------------------------
+
+Iteration #38; GPU #2
+
+----------------------------------------
+
+Iteration #39; GPU #3
+
+----------------------------------------
+
+Processing events...
+Saving temporary "/tmp/nsys-report-50cf-3466-6c63-e154.qdstrm" file to disk...
+
+Creating final output files...
+Processing [0%                                                                 ]Processing [3%                                                                 ]Processing [==6%                                                               ]Processing [3%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [2%                                                                 ]Processing [====11%                                                            ]Processing [===========21%                                                     ]Processing [========================41%                                        ]Processing [====================================59%                            ]Processing [===============================================76%                 ]Processing [===========================================================93%     ]Processing [============================================================95%    ]Processing [=============================================================96%   ]Processing [===============================================================100%]
+Saved report file to "/tmp/nsys-report-50cf-3466-6c63-e154.qdrep"
+Exporting 9035 events: [1%                                                     ]Exporting 9035 events: [2%                                                     ]Exporting 9035 events: [3%                                                     ]Exporting 9035 events: [4%                                                     ]Exporting 9035 events: [5%                                                     ]Exporting 9035 events: [=6%                                                    ]Exporting 9035 events: [=7%                                                    ]Exporting 9035 events: [==8%                                                   ]Exporting 9035 events: [==9%                                                   ]Exporting 9035 events: [==10%                                                  ]Exporting 9035 events: [===11%                                                 ]Exporting 9035 events: [===12%                                                 ]Exporting 9035 events: [====13%                                                ]Exporting 9035 events: [====14%                                                ]Exporting 9035 events: [=====15%                                               ]Exporting 9035 events: [=====16%                                               ]Exporting 9035 events: [======17%                                              ]Exporting 9035 events: [======18%                                              ]Exporting 9035 events: [=======19%                                             ]Exporting 9035 events: [========20%                                            ]Exporting 9035 events: [========21%                                            ]Exporting 9035 events: [=========22%                                           ]Exporting 9035 events: [=========23%                                           ]Exporting 9035 events: [==========24%                                          ]Exporting 9035 events: [==========25%                                          ]Exporting 9035 events: [===========26%                                         ]Exporting 9035 events: [===========27%                                         ]Exporting 9035 events: [============28%                                        ]Exporting 9035 events: [============29%                                        ]Exporting 9035 events: [=============30%                                       ]Exporting 9035 events: [==============31%                                      ]Exporting 9035 events: [==============32%                                      ]Exporting 9035 events: [===============33%                                     ]Exporting 9035 events: [===============34%                                     ]Exporting 9035 events: [================35%                                    ]Exporting 9035 events: [================36%                                    ]Exporting 9035 events: [=================37%                                   ]Exporting 9035 events: [=================38%                                   ]Exporting 9035 events: [==================39%                                  ]Exporting 9035 events: [===================40%                                 ]Exporting 9035 events: [===================41%                                 ]Exporting 9035 events: [====================42%                                ]Exporting 9035 events: [====================43%                                ]Exporting 9035 events: [=====================44%                               ]Exporting 9035 events: [=====================45%                               ]Exporting 9035 events: [======================46%                              ]Exporting 9035 events: [======================47%                              ]Exporting 9035 events: [=======================48%                             ]Exporting 9035 events: [=======================49%                             ]Exporting 9035 events: [========================50%                            ]Exporting 9035 events: [=========================51%                           ]Exporting 9035 events: [=========================52%                           ]Exporting 9035 events: [==========================53%                          ]Exporting 9035 events: [==========================54%                          ]Exporting 9035 events: [===========================55%                         ]Exporting 9035 events: [===========================56%                         ]Exporting 9035 events: [============================57%                        ]Exporting 9035 events: [============================58%                        ]Exporting 9035 events: [=============================59%                       ]Exporting 9035 events: [==============================60%                      ]Exporting 9035 events: [==============================61%                      ]Exporting 9035 events: [===============================62%                     ]Exporting 9035 events: [===============================63%                     ]Exporting 9035 events: [================================64%                    ]Exporting 9035 events: [================================65%                    ]Exporting 9035 events: [=================================66%                   ]Exporting 9035 events: [=================================67%                   ]Exporting 9035 events: [==================================68%                  ]Exporting 9035 events: [==================================69%                  ]Exporting 9035 events: [===================================70%                 ]Exporting 9035 events: [====================================71%                ]Exporting 9035 events: [====================================72%                ]Exporting 9035 events: [=====================================73%               ]Exporting 9035 events: [=====================================74%               ]Exporting 9035 events: [======================================75%              ]Exporting 9035 events: [======================================76%              ]Exporting 9035 events: [=======================================77%             ]Exporting 9035 events: [=======================================78%             ]Exporting 9035 events: [========================================79%            ]Exporting 9035 events: [=========================================80%           ]Exporting 9035 events: [=========================================81%           ]Exporting 9035 events: [==========================================82%          ]Exporting 9035 events: [==========================================83%          ]Exporting 9035 events: [===========================================84%         ]Exporting 9035 events: [===========================================85%         ]Exporting 9035 events: [============================================86%        ]Exporting 9035 events: [============================================87%        ]Exporting 9035 events: [=============================================88%       ]Exporting 9035 events: [=============================================89%       ]Exporting 9035 events: [==============================================90%      ]Exporting 9035 events: [===============================================91%     ]Exporting 9035 events: [===============================================92%     ]Exporting 9035 events: [================================================93%    ]Exporting 9035 events: [================================================94%    ]Exporting 9035 events: [=================================================95%   ]Exporting 9035 events: [=================================================96%   ]Exporting 9035 events: [==================================================97%  ]Exporting 9035 events: [==================================================98%  ]Exporting 9035 events: [===================================================99% ]Exporting 9035 events: [===================================================100%]
+
+Exported successfully to
+/tmp/nsys-report-50cf-3466-6c63-e154.txt
+Exporting 9035 events: [1%                                                     ]Exporting 9035 events: [2%                                                     ]Exporting 9035 events: [3%                                                     ]Exporting 9035 events: [4%                                                     ]Exporting 9035 events: [5%                                                     ]Exporting 9035 events: [=6%                                                    ]Exporting 9035 events: [=7%                                                    ]Exporting 9035 events: [==8%                                                   ]Exporting 9035 events: [==9%                                                   ]Exporting 9035 events: [==10%                                                  ]Exporting 9035 events: [===11%                                                 ]Exporting 9035 events: [===12%                                                 ]Exporting 9035 events: [====13%                                                ]Exporting 9035 events: [====14%                                                ]Exporting 9035 events: [=====15%                                               ]Exporting 9035 events: [=====16%                                               ]Exporting 9035 events: [======17%                                              ]Exporting 9035 events: [======18%                                              ]Exporting 9035 events: [=======19%                                             ]Exporting 9035 events: [========20%                                            ]Exporting 9035 events: [========21%                                            ]Exporting 9035 events: [=========22%                                           ]Exporting 9035 events: [=========23%                                           ]Exporting 9035 events: [==========24%                                          ]Exporting 9035 events: [==========25%                                          ]Exporting 9035 events: [===========26%                                         ]Exporting 9035 events: [===========27%                                         ]Exporting 9035 events: [============28%                                        ]Exporting 9035 events: [============29%                                        ]Exporting 9035 events: [=============30%                                       ]Exporting 9035 events: [==============31%                                      ]Exporting 9035 events: [==============32%                                      ]Exporting 9035 events: [===============33%                                     ]Exporting 9035 events: [===============34%                                     ]Exporting 9035 events: [================35%                                    ]Exporting 9035 events: [================36%                                    ]Exporting 9035 events: [=================37%                                   ]Exporting 9035 events: [=================38%                                   ]Exporting 9035 events: [==================39%                                  ]Exporting 9035 events: [===================40%                                 ]Exporting 9035 events: [===================41%                                 ]Exporting 9035 events: [====================42%                                ]Exporting 9035 events: [====================43%                                ]Exporting 9035 events: [=====================44%                               ]Exporting 9035 events: [=====================45%                               ]Exporting 9035 events: [======================46%                              ]Exporting 9035 events: [======================47%                              ]Exporting 9035 events: [=======================48%                             ]Exporting 9035 events: [=======================49%                             ]Exporting 9035 events: [========================50%                            ]Exporting 9035 events: [=========================51%                           ]Exporting 9035 events: [=========================52%                           ]Exporting 9035 events: [==========================53%                          ]Exporting 9035 events: [==========================54%                          ]Exporting 9035 events: [===========================55%                         ]Exporting 9035 events: [===========================56%                         ]Exporting 9035 events: [============================57%                        ]Exporting 9035 events: [============================58%                        ]Exporting 9035 events: [=============================59%                       ]Exporting 9035 events: [==============================60%                      ]Exporting 9035 events: [==============================61%                      ]Exporting 9035 events: [===============================62%                     ]Exporting 9035 events: [===============================63%                     ]Exporting 9035 events: [================================64%                    ]Exporting 9035 events: [================================65%                    ]Exporting 9035 events: [=================================66%                   ]Exporting 9035 events: [=================================67%                   ]Exporting 9035 events: [==================================68%                  ]Exporting 9035 events: [==================================69%                  ]Exporting 9035 events: [===================================70%                 ]Exporting 9035 events: [====================================71%                ]Exporting 9035 events: [====================================72%                ]Exporting 9035 events: [=====================================73%               ]Exporting 9035 events: [=====================================74%               ]Exporting 9035 events: [======================================75%              ]Exporting 9035 events: [======================================76%              ]Exporting 9035 events: [=======================================77%             ]Exporting 9035 events: [=======================================78%             ]Exporting 9035 events: [========================================79%            ]Exporting 9035 events: [=========================================80%           ]Exporting 9035 events: [=========================================81%           ]Exporting 9035 events: [==========================================82%          ]Exporting 9035 events: [==========================================83%          ]Exporting 9035 events: [===========================================84%         ]Exporting 9035 events: [===========================================85%         ]Exporting 9035 events: [============================================86%        ]Exporting 9035 events: [============================================87%        ]Exporting 9035 events: [=============================================88%       ]Exporting 9035 events: [=============================================89%       ]Exporting 9035 events: [==============================================90%      ]Exporting 9035 events: [===============================================91%     ]Exporting 9035 events: [===============================================92%     ]Exporting 9035 events: [================================================93%    ]Exporting 9035 events: [================================================94%    ]Exporting 9035 events: [=================================================95%   ]Exporting 9035 events: [=================================================96%   ]Exporting 9035 events: [==================================================97%  ]Exporting 9035 events: [==================================================98%  ]Exporting 9035 events: [===================================================99% ]Exporting 9035 events: [===================================================100%]
+
+Exported successfully to
+/tmp/nsys-report-50cf-3466-6c63-e154.json
+Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/zfp/build/report1.qdrep"
+Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/zfp/build/report1.txt"
+Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/zfp/build/report1.json"
+
