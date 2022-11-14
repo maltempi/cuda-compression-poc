@@ -1,0 +1,913 @@
+-- Found NVIDIA Tools Extension (NVTX): /usr/local/cuda/include
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build
+Scanning dependencies of target ex-api
+[ 33%] Building CUDA object CMakeFiles/ex-api.dir/src/main.cu.o
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(115): warning: conversion from a string literal to "char *" is deprecated
+
+/opt/cusz-v100/API/analysis/../component/huffman_coarse.cuh(371): warning: variable "debug_header_entry" was declared but never referenced
+          detected during:
+            instantiation of "void cusz::HuffmanCoarse<T, H, M>::subfile_collect(cusz::HuffmanCoarse<T, H, M>::HEADER &, size_t, int, int, int, cudaStream_t) [with T=uint16_t, H=unsigned long long, M=uint32_t]" 
+(512): here
+            instantiation of "void cusz::HuffmanCoarse<T, H, M>::encode(T *, size_t, int, int, int, cusz::HuffmanCoarse<T, H, M>::BYTE *&, size_t &, cudaStream_t, __nv_bool) [with T=uint16_t, H=unsigned long long, M=uint32_t]" 
+/opt/cusz-v100/API/compressor.cuh(255): here
+            instantiation of "void cusz::Compressor<BINDING>::compress_detail(cusz::Compressor<BINDING>::T *, double, int, int, uint32_t, int, cusz::Compressor<BINDING>::BYTE *&, size_t &, __nv_bool, cudaStream_t, __nv_bool) [with BINDING=cusz::CompressorTemplate<cusz::PredictorLorenzo<float, uint16_t, float>, cusz::CSR11<float>, cusz::HuffmanCoarse<uint16_t, uint32_t, uint32_t>, cusz::HuffmanCoarse<uint16_t, unsigned long long, uint32_t>>]" 
+/opt/cusz-v100/API/compressor.cuh(209): here
+            instantiation of "void cusz::Compressor<BINDING>::compress(CONFIG *, cusz::Compressor<BINDING>::T *, cusz::Compressor<BINDING>::BYTE *&, size_t &, cudaStream_t, __nv_bool) [with BINDING=cusz::CompressorTemplate<cusz::PredictorLorenzo<float, uint16_t, float>, cusz::CSR11<float>, cusz::HuffmanCoarse<uint16_t, uint32_t, uint32_t>, cusz::HuffmanCoarse<uint16_t, unsigned long long, uint32_t>>, CONFIG=cusz::Context]" 
+/opt/cusz-v100/API/api.hh(69): here
+            instantiation of "void cusz::core_compress(Compressor *, cusz::Context *, T *, size_t, cusz::BYTE *&, size_t &, cusz::Header &, cudaStream_t, cusz::TimeRecord *) [with Compressor=Compressor, T=float]" 
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(59): here
+
+/opt/cusz-v100/API/analysis/../component/huffman_coarse.cuh(371): warning: variable "debug_header_entry" was declared but never referenced
+          detected during:
+            instantiation of "void cusz::HuffmanCoarse<T, H, M>::subfile_collect(cusz::HuffmanCoarse<T, H, M>::HEADER &, size_t, int, int, int, cudaStream_t) [with T=uint16_t, H=uint32_t, M=uint32_t]" 
+(512): here
+            instantiation of "void cusz::HuffmanCoarse<T, H, M>::encode(T *, size_t, int, int, int, cusz::HuffmanCoarse<T, H, M>::BYTE *&, size_t &, cudaStream_t, __nv_bool) [with T=uint16_t, H=uint32_t, M=uint32_t]" 
+/opt/cusz-v100/API/compressor.cuh(261): here
+            instantiation of "void cusz::Compressor<BINDING>::compress_detail(cusz::Compressor<BINDING>::T *, double, int, int, uint32_t, int, cusz::Compressor<BINDING>::BYTE *&, size_t &, __nv_bool, cudaStream_t, __nv_bool) [with BINDING=cusz::CompressorTemplate<cusz::PredictorLorenzo<float, uint16_t, float>, cusz::CSR11<float>, cusz::HuffmanCoarse<uint16_t, uint32_t, uint32_t>, cusz::HuffmanCoarse<uint16_t, unsigned long long, uint32_t>>]" 
+/opt/cusz-v100/API/compressor.cuh(209): here
+            instantiation of "void cusz::Compressor<BINDING>::compress(CONFIG *, cusz::Compressor<BINDING>::T *, cusz::Compressor<BINDING>::BYTE *&, size_t &, cudaStream_t, __nv_bool) [with BINDING=cusz::CompressorTemplate<cusz::PredictorLorenzo<float, uint16_t, float>, cusz::CSR11<float>, cusz::HuffmanCoarse<uint16_t, uint32_t, uint32_t>, cusz::HuffmanCoarse<uint16_t, unsigned long long, uint32_t>>, CONFIG=cusz::Context]" 
+/opt/cusz-v100/API/api.hh(69): here
+            instantiation of "void cusz::core_compress(Compressor *, cusz::Context *, T *, size_t, cusz::BYTE *&, size_t &, cusz::Header &, cudaStream_t, cusz::TimeRecord *) [with Compressor=Compressor, T=float]" 
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(59): here
+
+/opt/cusz-v100/API/cli/quality_viewer.hh(34): warning: variable "println3" was declared but never referenced
+          detected during:
+            instantiation of "void cusz::QualityViewer::print_metrics<Data>(cusz::Stat *, size_t, __nv_bool) [with Data=float]" 
+(92): here
+            instantiation of "void cusz::QualityViewer::echo_metric_cpu(T *, T *, size_t, size_t, __nv_bool) [with T=float]" 
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(190): here
+
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(115): warning: conversion from a string literal to "char *" is deprecated
+
+[ 66%] Linking CUDA device code CMakeFiles/ex-api.dir/cmake_device_link.o
+[100%] Linking CUDA executable ex-api
+[100%] Built target ex-api
+go
+Collecting data...
+----------CUSZ------------------
+Parameters
+EB: 0.000100; Mode: mode=abs
+# GPUs: 4; # iterations per GPU: 10
+Input file path ../../hurr-CLOUDf48-500x500x100
+Dims: (500, 500, 100)
+--------------------------------
+Iteration #0; GPU #0
+Compression spent time 2087442[µs]
+Starting decompression
+DEcompression spent time 6589[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #1; GPU #1
+Compression spent time 231893[µs]
+Starting decompression
+DEcompression spent time 6862[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #2; GPU #2
+Compression spent time 242610[µs]
+Starting decompression
+DEcompression spent time 7105[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #3; GPU #3
+Compression spent time 263358[µs]
+Starting decompression
+DEcompression spent time 7398[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #4; GPU #0
+Compression spent time 8818[µs]
+Starting decompression
+DEcompression spent time 6762[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #5; GPU #1
+Compression spent time 8736[µs]
+Starting decompression
+DEcompression spent time 6768[µs]
+Report:
+CPU Metrics:
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+
+----------------------------------------
+
+Iteration #6; GPU #2
+Compression spent time 8648[µs]
+Starting decompression
+DEcompression spent time 6943[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #7; GPU #3
+Compression spent time 8731[µs]
+Starting decompression
+DEcompression spent time 6944[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #8; GPU #0
+Compression spent time 8861[µs]
+Starting decompression
+DEcompression spent time 7018[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #9; GPU #1
+Compression spent time 8806[µs]
+Starting decompression
+DEcompression spent time 7245[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #10; GPU #2
+Compression spent time 9222[µs]
+Starting decompression
+DEcompression spent time 8894[µs]
+Report:
+CPU Metrics:
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+
+----------------------------------------
+
+Iteration #11; GPU #3
+Compression spent time 9740[µs]
+Starting decompression
+DEcompression spent time 7226[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #12; GPU #0
+Compression spent time 8823[µs]
+Starting decompression
+DEcompression spent time 7132[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #13; GPU #1
+Compression spent time 8900[µs]
+Starting decompression
+DEcompression spent time 7008[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #14; GPU #2
+Compression spent time 8841[µs]
+Starting decompression
+DEcompression spent time 6880[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #15; GPU #3
+Compression spent time 8830[µs]
+Starting decompression
+DEcompression spent time 7026[µs]
+Report:
+CPU Metrics:
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+
+----------------------------------------
+
+Iteration #16; GPU #0
+Compression spent time 9090[µs]
+Starting decompression
+DEcompression spent time 7144[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #17; GPU #1
+Compression spent time 9000[µs]
+Starting decompression
+DEcompression spent time 6966[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #18; GPU #2
+Compression spent time 8899[µs]
+Starting decompression
+DEcompression spent time 6905[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #19; GPU #3
+Compression spent time 8816[µs]
+Starting decompression
+DEcompression spent time 6953[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #20; GPU #0
+Compression spent time 8988[µs]
+Starting decompression
+DEcompression spent time 7188[µs]
+Report:
+CPU Metrics:
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+
+----------------------------------------
+
+Iteration #21; GPU #1
+Compression spent time 9004[µs]
+Starting decompression
+DEcompression spent time 7072[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #22; GPU #2
+Compression spent time 8784[µs]
+Starting decompression
+DEcompression spent time 7034[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #23; GPU #3
+Compression spent time 9018[µs]
+Starting decompression
+DEcompression spent time 7066[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #24; GPU #0
+Compression spent time 8937[µs]
+Starting decompression
+DEcompression spent time 7005[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #25; GPU #1
+Compression spent time 8908[µs]
+Starting decompression
+DEcompression spent time 6849[µs]
+Report:
+CPU Metrics:
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+
+----------------------------------------
+
+Iteration #26; GPU #2
+Compression spent time 8835[µs]
+Starting decompression
+DEcompression spent time 6820[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #27; GPU #3
+Compression spent time 8940[µs]
+Starting decompression
+DEcompression spent time 7117[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #28; GPU #0
+Compression spent time 8817[µs]
+Starting decompression
+DEcompression spent time 6849[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #29; GPU #1
+Compression spent time 9641[µs]
+Starting decompression
+DEcompression spent time 7960[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #30; GPU #2
+Compression spent time 8952[µs]
+Starting decompression
+DEcompression spent time 7303[µs]
+Report:
+CPU Metrics:
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+
+----------------------------------------
+
+Iteration #31; GPU #3
+Compression spent time 9107[µs]
+Starting decompression
+DEcompression spent time 7218[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #32; GPU #0
+Compression spent time 8990[µs]
+Starting decompression
+DEcompression spent time 7127[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #33; GPU #1
+Compression spent time 8946[µs]
+Starting decompression
+DEcompression spent time 7020[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #34; GPU #2
+Compression spent time 8830[µs]
+Starting decompression
+DEcompression spent time 7005[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #35; GPU #3
+Compression spent time 8767[µs]
+Starting decompression
+DEcompression spent time 7041[µs]
+Report:
+CPU Metrics:
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+
+----------------------------------------
+
+Iteration #36; GPU #0
+Compression spent time 8899[µs]
+Starting decompression
+DEcompression spent time 7087[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #37; GPU #1
+Compression spent time 8811[µs]
+Starting decompression
+DEcompression spent time 7056[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #38; GPU #2
+Compression spent time 8757[µs]
+Starting decompression
+DEcompression spent time 6983[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #39; GPU #3
+Compression spent time 8790[µs]
+Starting decompression
+DEcompression spent time 7056[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+
+quality metrics (using CPU checker):
+  [1m[31m                   data-len        data-byte         fp-type?                 [0m
+                     25000000                4              yes
+  [1m[31m                        min              max              rng              std[0m
+  origin                    0     0.0020479534     0.0020479534    5.2587476e-05
+  eb-lossy                  0     0.0020479534     0.0020479534    5.3790013e-05
+  [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
+  max-error     9.9999954e-05         16671498                1      0.048829213
+  [1m[31m                         CR            NRMSE       corr-coeff             PSNR[0m
+  metrics           29.240176     0.0066430573       0.96785967         43.55264
+
+Processing events...
+Saving temporary "/tmp/nsys-report-cd7d-0e85-6986-fa4a.qdstrm" file to disk...
+
+Creating final output files...
+Processing [0%                                                                 ]Processing [1%                                                                 ]Processing [3%                                                                 ]Processing [2%                                                                 ]Processing [4%                                                                 ]Processing [3%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [==6%                                                               ]Processing [====11%                                                            ]Processing [===10%                                                             ]Processing [====9%                                                             ]Processing [===8%                                                              ]Processing [==7%                                                               ]Processing [==6%                                                               ]Processing [=5%                                                                ]Processing [==6%                                                               ]Processing [====11%                                                            ]Processing [=======16%                                                         ]Processing [===========21%                                                     ]Processing [==============26%                                                  ]Processing [=================31%                                               ]Processing [=====================36%                                           ]Processing [========================41%                                        ]Processing [===========================46%                                     ]Processing [===============================51%                                 ]Processing [=================================55%                               ]Processing [=====================================61%                           ]Processing [=========================================66%                       ]Processing [============================================71%                    ]Processing [===============================================76%                 ]Processing [===================================================81%             ]Processing [======================================================86%          ]Processing [========================================================89%        ]Processing [===============================================================100%]
+Saved report file to "/tmp/nsys-report-cd7d-0e85-6986-fa4a.qdrep"
+Exporting 39478 events: [1%                                                    ]Exporting 39478 events: [2%                                                    ]Exporting 39478 events: [3%                                                    ]Exporting 39478 events: [4%                                                    ]Exporting 39478 events: [5%                                                    ]Exporting 39478 events: [=6%                                                   ]Exporting 39478 events: [=7%                                                   ]Exporting 39478 events: [==8%                                                  ]Exporting 39478 events: [==9%                                                  ]Exporting 39478 events: [==10%                                                 ]Exporting 39478 events: [==11%                                                 ]Exporting 39478 events: [===12%                                                ]Exporting 39478 events: [====13%                                               ]Exporting 39478 events: [====14%                                               ]Exporting 39478 events: [=====15%                                              ]Exporting 39478 events: [=====16%                                              ]Exporting 39478 events: [======17%                                             ]Exporting 39478 events: [======18%                                             ]Exporting 39478 events: [=======19%                                            ]Exporting 39478 events: [=======20%                                            ]Exporting 39478 events: [========21%                                           ]Exporting 39478 events: [========22%                                           ]Exporting 39478 events: [=========23%                                          ]Exporting 39478 events: [=========24%                                          ]Exporting 39478 events: [==========25%                                         ]Exporting 39478 events: [===========26%                                        ]Exporting 39478 events: [===========27%                                        ]Exporting 39478 events: [============28%                                       ]Exporting 39478 events: [============29%                                       ]Exporting 39478 events: [=============30%                                      ]Exporting 39478 events: [=============31%                                      ]Exporting 39478 events: [==============32%                                     ]Exporting 39478 events: [==============33%                                     ]Exporting 39478 events: [===============34%                                    ]Exporting 39478 events: [===============35%                                    ]Exporting 39478 events: [================36%                                   ]Exporting 39478 events: [================37%                                   ]Exporting 39478 events: [=================38%                                  ]Exporting 39478 events: [==================39%                                 ]Exporting 39478 events: [==================40%                                 ]Exporting 39478 events: [===================41%                                ]Exporting 39478 events: [===================42%                                ]Exporting 39478 events: [====================43%                               ]Exporting 39478 events: [====================44%                               ]Exporting 39478 events: [=====================45%                              ]Exporting 39478 events: [=====================46%                              ]Exporting 39478 events: [======================47%                             ]Exporting 39478 events: [======================48%                             ]Exporting 39478 events: [=======================49%                            ]Exporting 39478 events: [========================50%                           ]Exporting 39478 events: [========================51%                           ]Exporting 39478 events: [=========================52%                          ]Exporting 39478 events: [=========================53%                          ]Exporting 39478 events: [==========================54%                         ]Exporting 39478 events: [==========================55%                         ]Exporting 39478 events: [===========================56%                        ]Exporting 39478 events: [===========================57%                        ]Exporting 39478 events: [============================58%                       ]Exporting 39478 events: [============================59%                       ]Exporting 39478 events: [=============================60%                      ]Exporting 39478 events: [=============================61%                      ]Exporting 39478 events: [==============================62%                     ]Exporting 39478 events: [===============================63%                    ]Exporting 39478 events: [===============================64%                    ]Exporting 39478 events: [================================65%                   ]Exporting 39478 events: [================================66%                   ]Exporting 39478 events: [=================================67%                  ]Exporting 39478 events: [=================================68%                  ]Exporting 39478 events: [==================================69%                 ]Exporting 39478 events: [==================================70%                 ]Exporting 39478 events: [===================================71%                ]Exporting 39478 events: [===================================72%                ]Exporting 39478 events: [====================================73%               ]Exporting 39478 events: [====================================74%               ]Exporting 39478 events: [=====================================75%              ]Exporting 39478 events: [======================================76%             ]Exporting 39478 events: [======================================77%             ]Exporting 39478 events: [=======================================78%            ]Exporting 39478 events: [=======================================79%            ]Exporting 39478 events: [========================================80%           ]Exporting 39478 events: [========================================81%           ]Exporting 39478 events: [=========================================82%          ]Exporting 39478 events: [=========================================83%          ]Exporting 39478 events: [==========================================84%         ]Exporting 39478 events: [==========================================85%         ]Exporting 39478 events: [===========================================86%        ]Exporting 39478 events: [===========================================87%        ]Exporting 39478 events: [============================================88%       ]Exporting 39478 events: [=============================================89%      ]Exporting 39478 events: [=============================================90%      ]Exporting 39478 events: [==============================================91%     ]Exporting 39478 events: [==============================================92%     ]Exporting 39478 events: [===============================================93%    ]Exporting 39478 events: [===============================================94%    ]Exporting 39478 events: [================================================95%   ]Exporting 39478 events: [================================================96%   ]Exporting 39478 events: [=================================================97%  ]Exporting 39478 events: [=================================================98%  ]Exporting 39478 events: [==================================================99% ]Exporting 39478 events: [==================================================100%]
+
+Exported successfully to
+/tmp/nsys-report-cd7d-0e85-6986-fa4a.txt
+Exporting 39478 events: [1%                                                    ]Exporting 39478 events: [2%                                                    ]Exporting 39478 events: [3%                                                    ]Exporting 39478 events: [4%                                                    ]Exporting 39478 events: [5%                                                    ]Exporting 39478 events: [=6%                                                   ]Exporting 39478 events: [=7%                                                   ]Exporting 39478 events: [==8%                                                  ]Exporting 39478 events: [==9%                                                  ]Exporting 39478 events: [==10%                                                 ]Exporting 39478 events: [==11%                                                 ]Exporting 39478 events: [===12%                                                ]Exporting 39478 events: [====13%                                               ]Exporting 39478 events: [====14%                                               ]Exporting 39478 events: [=====15%                                              ]Exporting 39478 events: [=====16%                                              ]Exporting 39478 events: [======17%                                             ]Exporting 39478 events: [======18%                                             ]Exporting 39478 events: [=======19%                                            ]Exporting 39478 events: [=======20%                                            ]Exporting 39478 events: [========21%                                           ]Exporting 39478 events: [========22%                                           ]Exporting 39478 events: [=========23%                                          ]Exporting 39478 events: [=========24%                                          ]Exporting 39478 events: [==========25%                                         ]Exporting 39478 events: [===========26%                                        ]Exporting 39478 events: [===========27%                                        ]Exporting 39478 events: [============28%                                       ]Exporting 39478 events: [============29%                                       ]Exporting 39478 events: [=============30%                                      ]Exporting 39478 events: [=============31%                                      ]Exporting 39478 events: [==============32%                                     ]Exporting 39478 events: [==============33%                                     ]Exporting 39478 events: [===============34%                                    ]Exporting 39478 events: [===============35%                                    ]Exporting 39478 events: [================36%                                   ]Exporting 39478 events: [================37%                                   ]Exporting 39478 events: [=================38%                                  ]Exporting 39478 events: [==================39%                                 ]Exporting 39478 events: [==================40%                                 ]Exporting 39478 events: [===================41%                                ]Exporting 39478 events: [===================42%                                ]Exporting 39478 events: [====================43%                               ]Exporting 39478 events: [====================44%                               ]Exporting 39478 events: [=====================45%                              ]Exporting 39478 events: [=====================46%                              ]Exporting 39478 events: [======================47%                             ]Exporting 39478 events: [======================48%                             ]Exporting 39478 events: [=======================49%                            ]Exporting 39478 events: [========================50%                           ]Exporting 39478 events: [========================51%                           ]Exporting 39478 events: [=========================52%                          ]Exporting 39478 events: [=========================53%                          ]Exporting 39478 events: [==========================54%                         ]Exporting 39478 events: [==========================55%                         ]Exporting 39478 events: [===========================56%                        ]Exporting 39478 events: [===========================57%                        ]Exporting 39478 events: [============================58%                       ]Exporting 39478 events: [============================59%                       ]Exporting 39478 events: [=============================60%                      ]Exporting 39478 events: [=============================61%                      ]Exporting 39478 events: [==============================62%                     ]Exporting 39478 events: [===============================63%                    ]Exporting 39478 events: [===============================64%                    ]Exporting 39478 events: [================================65%                   ]Exporting 39478 events: [================================66%                   ]Exporting 39478 events: [=================================67%                  ]Exporting 39478 events: [=================================68%                  ]Exporting 39478 events: [==================================69%                 ]Exporting 39478 events: [==================================70%                 ]Exporting 39478 events: [===================================71%                ]Exporting 39478 events: [===================================72%                ]Exporting 39478 events: [====================================73%               ]Exporting 39478 events: [====================================74%               ]Exporting 39478 events: [=====================================75%              ]Exporting 39478 events: [======================================76%             ]Exporting 39478 events: [======================================77%             ]Exporting 39478 events: [=======================================78%            ]Exporting 39478 events: [=======================================79%            ]Exporting 39478 events: [========================================80%           ]Exporting 39478 events: [========================================81%           ]Exporting 39478 events: [=========================================82%          ]Exporting 39478 events: [=========================================83%          ]Exporting 39478 events: [==========================================84%         ]Exporting 39478 events: [==========================================85%         ]Exporting 39478 events: [===========================================86%        ]Exporting 39478 events: [===========================================87%        ]Exporting 39478 events: [============================================88%       ]Exporting 39478 events: [=============================================89%      ]Exporting 39478 events: [=============================================90%      ]Exporting 39478 events: [==============================================91%     ]Exporting 39478 events: [==============================================92%     ]Exporting 39478 events: [===============================================93%    ]Exporting 39478 events: [===============================================94%    ]Exporting 39478 events: [================================================95%   ]Exporting 39478 events: [================================================96%   ]Exporting 39478 events: [=================================================97%  ]Exporting 39478 events: [=================================================98%  ]Exporting 39478 events: [==================================================99% ]Exporting 39478 events: [==================================================100%]
+
+Exported successfully to
+/tmp/nsys-report-cd7d-0e85-6986-fa4a.json
+Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build/report3.qdrep"
+Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build/report3.txt"
+Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build/report3.json"
+

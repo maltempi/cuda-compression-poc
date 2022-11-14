@@ -54,12 +54,13 @@ void compress(Data_t *data, size_t nx, size_t ny, size_t nz, cudaStream_t stream
     cudaMemcpy(d_uncompressed_copy, data->d_uncompressed_data, sizeof(float) * nx * ny * nz, cudaMemcpyHostToDevice);
 
     cusz::Context::adjust_eb(ctx, d_uncompressed_copy);
-    fprintf(stderr, "EB (after adjust_eb): %lf\n", ctx->eb);
 
+    NVTX_PUSH_RANGE("CUSZ_COMPRESS", MY_YELLOW);
     cusz::core_compress(compressor, ctx,                                             // compressor & config
                         d_uncompressed_copy, uncompressed_alloclen,                  // input
                         data->d_compressed_data, data->compressed_len, data->header, // output
                         stream, &timerecord);
+    NVTX_POP_RANGE();
 
     cudaFree(d_uncompressed_copy);
     delete compressor;
@@ -73,13 +74,14 @@ void decompress(Data_t *data, cudaStream_t stream)
 
     cudaMalloc(&data->d_uncompressed_data, sizeof(float) * uncompressed_alloclen);
 
-    fprintf(stderr, "Decompressing \n");
+    NVTX_PUSH_RANGE("CUSZ_DECOMPRESS", MY_YELLOW);
     cusz::core_decompress(compressor, &data->header,
                           data->d_compressed_data,   // input
                           data->compressed_len,      // input len
                           data->d_decompressed_data, // output
                           uncompressed_alloclen,     // output len
                           stream, &timerecord);
+    NVTX_POP_RANGE();
 
     // cusz::TimeRecordViewer::view_decompression(&timerecord, len * sizeof(float));
 
