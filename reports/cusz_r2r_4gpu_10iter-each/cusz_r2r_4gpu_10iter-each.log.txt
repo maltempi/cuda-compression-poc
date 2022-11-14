@@ -17,7 +17,7 @@
 -- Build files have been written to: /home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build
 Scanning dependencies of target ex-api
 [ 33%] Building CUDA object CMakeFiles/ex-api.dir/src/main.cu.o
-/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(113): warning: conversion from a string literal to "char *" is deprecated
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(115): warning: conversion from a string literal to "char *" is deprecated
 
 /opt/cusz-v100/API/analysis/../component/huffman_coarse.cuh(371): warning: variable "debug_header_entry" was declared but never referenced
           detected during:
@@ -50,9 +50,9 @@ Scanning dependencies of target ex-api
             instantiation of "void cusz::QualityViewer::print_metrics<Data>(cusz::Stat *, size_t, __nv_bool) [with Data=float]" 
 (92): here
             instantiation of "void cusz::QualityViewer::echo_metric_cpu(T *, T *, size_t, size_t, __nv_bool) [with T=float]" 
-/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(188): here
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(190): here
 
-/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(113): warning: conversion from a string literal to "char *" is deprecated
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(115): warning: conversion from a string literal to "char *" is deprecated
 
 [ 66%] Linking CUDA device code CMakeFiles/ex-api.dir/cmake_device_link.o
 [100%] Linking CUDA executable ex-api
@@ -67,379 +67,299 @@ Input file path ../../hurr-CLOUDf48-500x500x100
 Dims: (500, 500, 100)
 --------------------------------
 Iteration #0; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 2159591[µs]
+Compression spent time 2185093[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7447[µs]
+DEcompression spent time 7480[µs]
 
 ----------------------------------------
 
 Iteration #1; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 247319[µs]
+Compression spent time 253718[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7700[µs]
+DEcompression spent time 7760[µs]
 
 ----------------------------------------
 
 Iteration #2; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 255518[µs]
+Compression spent time 266612[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7728[µs]
+DEcompression spent time 8037[µs]
 
 ----------------------------------------
 
 Iteration #3; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 258056[µs]
+Compression spent time 246500[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7884[µs]
+DEcompression spent time 8332[µs]
 
 ----------------------------------------
 
 Iteration #4; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9457[µs]
+Compression spent time 9559[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7533[µs]
+DEcompression spent time 7618[µs]
 
 ----------------------------------------
 
 Iteration #5; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9424[µs]
+Compression spent time 9581[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7576[µs]
+DEcompression spent time 7651[µs]
 
 ----------------------------------------
 
 Iteration #6; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9397[µs]
+Compression spent time 9587[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7713[µs]
+DEcompression spent time 7738[µs]
 
 ----------------------------------------
 
 Iteration #7; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9347[µs]
+Compression spent time 10246[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7489[µs]
+DEcompression spent time 8184[µs]
 
 ----------------------------------------
 
 Iteration #8; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9487[µs]
+Compression spent time 9545[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7543[µs]
+DEcompression spent time 7889[µs]
 
 ----------------------------------------
 
 Iteration #9; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9449[µs]
+Compression spent time 9482[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7773[µs]
+DEcompression spent time 7997[µs]
 
 ----------------------------------------
 
 Iteration #10; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9432[µs]
+Compression spent time 9698[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7743[µs]
+DEcompression spent time 7998[µs]
 
 ----------------------------------------
 
 Iteration #11; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9356[µs]
+Compression spent time 9655[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8106[µs]
+DEcompression spent time 7995[µs]
 
 ----------------------------------------
 
 Iteration #12; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 64578[µs]
+Compression spent time 9777[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 36767[µs]
+DEcompression spent time 7830[µs]
 
 ----------------------------------------
 
 Iteration #13; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 61803[µs]
+Compression spent time 9432[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 24301[µs]
+DEcompression spent time 7862[µs]
 
 ----------------------------------------
 
 Iteration #14; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 10907[µs]
+Compression spent time 9659[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 11323[µs]
+DEcompression spent time 7945[µs]
 
 ----------------------------------------
 
 Iteration #15; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 13322[µs]
+Compression spent time 9749[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7890[µs]
+DEcompression spent time 8044[µs]
 
 ----------------------------------------
 
 Iteration #16; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9639[µs]
+Compression spent time 9489[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7779[µs]
+DEcompression spent time 7888[µs]
 
 ----------------------------------------
 
 Iteration #17; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9731[µs]
+Compression spent time 9568[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7740[µs]
+DEcompression spent time 7939[µs]
 
 ----------------------------------------
 
 Iteration #18; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9665[µs]
+Compression spent time 9616[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7976[µs]
+DEcompression spent time 7898[µs]
 
 ----------------------------------------
 
 Iteration #19; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9952[µs]
+Compression spent time 9608[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8157[µs]
+DEcompression spent time 8007[µs]
 
 ----------------------------------------
 
 Iteration #20; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9679[µs]
+Compression spent time 9722[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8032[µs]
+DEcompression spent time 7981[µs]
 
 ----------------------------------------
 
 Iteration #21; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9640[µs]
+Compression spent time 9459[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7961[µs]
+DEcompression spent time 7886[µs]
 
 ----------------------------------------
 
 Iteration #22; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 72900[µs]
+Compression spent time 9580[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8299[µs]
+DEcompression spent time 7956[µs]
 
 ----------------------------------------
 
 Iteration #23; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9824[µs]
+Compression spent time 9659[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8049[µs]
+DEcompression spent time 7968[µs]
 
 ----------------------------------------
 
 Iteration #24; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9732[µs]
+Compression spent time 9678[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7940[µs]
+DEcompression spent time 7945[µs]
 
 ----------------------------------------
 
 Iteration #25; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9585[µs]
+Compression spent time 9749[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7941[µs]
+DEcompression spent time 7819[µs]
 
 ----------------------------------------
 
 Iteration #26; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9768[µs]
+Compression spent time 9624[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7973[µs]
+DEcompression spent time 7992[µs]
 
 ----------------------------------------
 
 Iteration #27; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9805[µs]
+Compression spent time 9722[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8077[µs]
+DEcompression spent time 8045[µs]
 
 ----------------------------------------
 
 Iteration #28; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9820[µs]
+Compression spent time 9593[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7952[µs]
+DEcompression spent time 7825[µs]
 
 ----------------------------------------
 
 Iteration #29; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9642[µs]
+Compression spent time 9493[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7913[µs]
+DEcompression spent time 7898[µs]
 
 ----------------------------------------
 
 Iteration #30; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9763[µs]
+Compression spent time 9733[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8027[µs]
+DEcompression spent time 8038[µs]
 
 ----------------------------------------
 
 Iteration #31; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9777[µs]
+Compression spent time 9590[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8063[µs]
+DEcompression spent time 7940[µs]
 
 ----------------------------------------
 
 Iteration #32; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 10254[µs]
+Compression spent time 9609[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8102[µs]
+DEcompression spent time 7757[µs]
 
 ----------------------------------------
 
 Iteration #33; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 10379[µs]
+Compression spent time 9411[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7885[µs]
+DEcompression spent time 7879[µs]
 
 ----------------------------------------
 
 Iteration #34; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9739[µs]
+Compression spent time 9671[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7845[µs]
+DEcompression spent time 8007[µs]
 
 ----------------------------------------
 
 Iteration #35; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9705[µs]
+Compression spent time 9608[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7810[µs]
+DEcompression spent time 8339[µs]
 
 ----------------------------------------
 
 Iteration #36; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9794[µs]
+Compression spent time 9779[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7893[µs]
+DEcompression spent time 7992[µs]
 
 ----------------------------------------
 
 Iteration #37; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9807[µs]
+Compression spent time 10025[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7937[µs]
+DEcompression spent time 7976[µs]
 
 ----------------------------------------
 
 Iteration #38; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9764[µs]
+Compression spent time 9740[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7847[µs]
+DEcompression spent time 7934[µs]
 
 ----------------------------------------
 
 Iteration #39; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9706[µs]
+Compression spent time 9861[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7835[µs]
+DEcompression spent time 7948[µs]
 
 ----------------------------------------
 
 Processing events...
-Saving temporary "/tmp/nsys-report-e2c4-218c-e57e-1a1a.qdstrm" file to disk...
+Saving temporary "/tmp/nsys-report-1e7d-1ac5-c8b6-0204.qdstrm" file to disk...
 
 Creating final output files...
-Processing [0%                                                                 ]Processing [3%                                                                 ]Processing [==6%                                                               ]Processing [3%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [==6%                                                               ]Processing [=====12%                                                           ]Processing [===10%                                                             ]Processing [====9%                                                             ]Processing [===8%                                                              ]Processing [==7%                                                               ]Processing [==6%                                                               ]Processing [=5%                                                                ]Processing [====11%                                                            ]Processing [=======16%                                                         ]Processing [==========20%                                                      ]Processing [==============26%                                                  ]Processing [=================30%                                               ]Processing [====================35%                                            ]Processing [=======================40%                                         ]Processing [===========================45%                                     ]Processing [=============================49%                                   ]Processing [=================================54%                               ]Processing [====================================59%                            ]Processing [=======================================64%                         ]Processing [===========================================69%                     ]Processing [==============================================74%                  ]Processing [=================================================78%               ]Processing [====================================================83%            ]Processing [=======================================================88%         ]Processing [===============================================================100%]
-Saved report file to "/tmp/nsys-report-e2c4-218c-e57e-1a1a.qdrep"
-Exporting 40750 events: [1%                                                    ]Exporting 40750 events: [2%                                                    ]Exporting 40750 events: [3%                                                    ]Exporting 40750 events: [4%                                                    ]Exporting 40750 events: [5%                                                    ]Exporting 40750 events: [=6%                                                   ]Exporting 40750 events: [=7%                                                   ]Exporting 40750 events: [==8%                                                  ]Exporting 40750 events: [==9%                                                  ]Exporting 40750 events: [==10%                                                 ]Exporting 40750 events: [==11%                                                 ]Exporting 40750 events: [===12%                                                ]Exporting 40750 events: [====13%                                               ]Exporting 40750 events: [====14%                                               ]Exporting 40750 events: [=====15%                                              ]Exporting 40750 events: [=====16%                                              ]Exporting 40750 events: [======17%                                             ]Exporting 40750 events: [======18%                                             ]Exporting 40750 events: [=======19%                                            ]Exporting 40750 events: [=======20%                                            ]Exporting 40750 events: [========21%                                           ]Exporting 40750 events: [========22%                                           ]Exporting 40750 events: [=========23%                                          ]Exporting 40750 events: [=========24%                                          ]Exporting 40750 events: [==========25%                                         ]Exporting 40750 events: [===========26%                                        ]Exporting 40750 events: [===========27%                                        ]Exporting 40750 events: [============28%                                       ]Exporting 40750 events: [============29%                                       ]Exporting 40750 events: [=============30%                                      ]Exporting 40750 events: [=============31%                                      ]Exporting 40750 events: [==============32%                                     ]Exporting 40750 events: [==============33%                                     ]Exporting 40750 events: [===============34%                                    ]Exporting 40750 events: [===============35%                                    ]Exporting 40750 events: [================36%                                   ]Exporting 40750 events: [================37%                                   ]Exporting 40750 events: [=================38%                                  ]Exporting 40750 events: [==================39%                                 ]Exporting 40750 events: [==================40%                                 ]Exporting 40750 events: [===================41%                                ]Exporting 40750 events: [===================42%                                ]Exporting 40750 events: [====================43%                               ]Exporting 40750 events: [====================44%                               ]Exporting 40750 events: [=====================45%                              ]Exporting 40750 events: [=====================46%                              ]Exporting 40750 events: [======================47%                             ]Exporting 40750 events: [======================48%                             ]Exporting 40750 events: [=======================49%                            ]Exporting 40750 events: [========================50%                           ]Exporting 40750 events: [========================51%                           ]Exporting 40750 events: [=========================52%                          ]Exporting 40750 events: [=========================53%                          ]Exporting 40750 events: [==========================54%                         ]Exporting 40750 events: [==========================55%                         ]Exporting 40750 events: [===========================56%                        ]Exporting 40750 events: [===========================57%                        ]Exporting 40750 events: [============================58%                       ]Exporting 40750 events: [============================59%                       ]Exporting 40750 events: [=============================60%                      ]Exporting 40750 events: [=============================61%                      ]Exporting 40750 events: [==============================62%                     ]Exporting 40750 events: [===============================63%                    ]Exporting 40750 events: [===============================64%                    ]Exporting 40750 events: [================================65%                   ]Exporting 40750 events: [================================66%                   ]Exporting 40750 events: [=================================67%                  ]Exporting 40750 events: [=================================68%                  ]Exporting 40750 events: [==================================69%                 ]Exporting 40750 events: [==================================70%                 ]Exporting 40750 events: [===================================71%                ]Exporting 40750 events: [===================================72%                ]Exporting 40750 events: [====================================73%               ]Exporting 40750 events: [====================================74%               ]Exporting 40750 events: [=====================================75%              ]Exporting 40750 events: [======================================76%             ]Exporting 40750 events: [======================================77%             ]Exporting 40750 events: [=======================================78%            ]Exporting 40750 events: [=======================================79%            ]Exporting 40750 events: [========================================80%           ]Exporting 40750 events: [========================================81%           ]Exporting 40750 events: [=========================================82%          ]Exporting 40750 events: [=========================================83%          ]Exporting 40750 events: [==========================================84%         ]Exporting 40750 events: [==========================================85%         ]Exporting 40750 events: [===========================================86%        ]Exporting 40750 events: [===========================================87%        ]Exporting 40750 events: [============================================88%       ]Exporting 40750 events: [=============================================89%      ]Exporting 40750 events: [=============================================90%      ]Exporting 40750 events: [==============================================91%     ]Exporting 40750 events: [==============================================92%     ]Exporting 40750 events: [===============================================93%    ]Exporting 40750 events: [===============================================94%    ]Exporting 40750 events: [================================================95%   ]Exporting 40750 events: [================================================96%   ]Exporting 40750 events: [=================================================97%  ]Exporting 40750 events: [=================================================98%  ]Exporting 40750 events: [==================================================99% ]Exporting 40750 events: [==================================================100%]
+Processing [0%                                                                 ]Processing [2%                                                                 ]Processing [=5%                                                                ]Processing [3%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [3%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [==7%                                                               ]Processing [=====13%                                                           ]Processing [====11%                                                            ]Processing [===10%                                                             ]Processing [====9%                                                             ]Processing [===8%                                                              ]Processing [==7%                                                               ]Processing [==6%                                                               ]Processing [=5%                                                                ]Processing [==6%                                                               ]Processing [====11%                                                            ]Processing [=======16%                                                         ]Processing [===========21%                                                     ]Processing [==============26%                                                  ]Processing [=================31%                                               ]Processing [=====================36%                                           ]Processing [========================41%                                        ]Processing [===========================45%                                     ]Processing [=============================49%                                   ]Processing [=================================54%                               ]Processing [====================================59%                            ]Processing [=======================================64%                         ]Processing [===========================================69%                     ]Processing [==============================================74%                  ]Processing [=================================================79%               ]Processing [=====================================================84%           ]Processing [=======================================================88%         ]Processing [===============================================================100%]
+Saved report file to "/tmp/nsys-report-1e7d-1ac5-c8b6-0204.qdrep"
+Exporting 40850 events: [1%                                                    ]Exporting 40850 events: [2%                                                    ]Exporting 40850 events: [3%                                                    ]Exporting 40850 events: [4%                                                    ]Exporting 40850 events: [5%                                                    ]Exporting 40850 events: [=6%                                                   ]Exporting 40850 events: [=7%                                                   ]Exporting 40850 events: [==8%                                                  ]Exporting 40850 events: [==9%                                                  ]Exporting 40850 events: [==10%                                                 ]Exporting 40850 events: [==11%                                                 ]Exporting 40850 events: [===12%                                                ]Exporting 40850 events: [====13%                                               ]Exporting 40850 events: [====14%                                               ]Exporting 40850 events: [=====15%                                              ]Exporting 40850 events: [=====16%                                              ]Exporting 40850 events: [======17%                                             ]Exporting 40850 events: [======18%                                             ]Exporting 40850 events: [=======19%                                            ]Exporting 40850 events: [=======20%                                            ]Exporting 40850 events: [========21%                                           ]Exporting 40850 events: [========22%                                           ]Exporting 40850 events: [=========23%                                          ]Exporting 40850 events: [=========24%                                          ]Exporting 40850 events: [==========25%                                         ]Exporting 40850 events: [===========26%                                        ]Exporting 40850 events: [===========27%                                        ]Exporting 40850 events: [============28%                                       ]Exporting 40850 events: [============29%                                       ]Exporting 40850 events: [=============30%                                      ]Exporting 40850 events: [=============31%                                      ]Exporting 40850 events: [==============32%                                     ]Exporting 40850 events: [==============33%                                     ]Exporting 40850 events: [===============34%                                    ]Exporting 40850 events: [===============35%                                    ]Exporting 40850 events: [================36%                                   ]Exporting 40850 events: [================37%                                   ]Exporting 40850 events: [=================38%                                  ]Exporting 40850 events: [==================39%                                 ]Exporting 40850 events: [==================40%                                 ]Exporting 40850 events: [===================41%                                ]Exporting 40850 events: [===================42%                                ]Exporting 40850 events: [====================43%                               ]Exporting 40850 events: [====================44%                               ]Exporting 40850 events: [=====================45%                              ]Exporting 40850 events: [=====================46%                              ]Exporting 40850 events: [======================47%                             ]Exporting 40850 events: [======================48%                             ]Exporting 40850 events: [=======================49%                            ]Exporting 40850 events: [========================50%                           ]Exporting 40850 events: [========================51%                           ]Exporting 40850 events: [=========================52%                          ]Exporting 40850 events: [=========================53%                          ]Exporting 40850 events: [==========================54%                         ]Exporting 40850 events: [==========================55%                         ]Exporting 40850 events: [===========================56%                        ]Exporting 40850 events: [===========================57%                        ]Exporting 40850 events: [============================58%                       ]Exporting 40850 events: [============================59%                       ]Exporting 40850 events: [=============================60%                      ]Exporting 40850 events: [=============================61%                      ]Exporting 40850 events: [==============================62%                     ]Exporting 40850 events: [===============================63%                    ]Exporting 40850 events: [===============================64%                    ]Exporting 40850 events: [================================65%                   ]Exporting 40850 events: [================================66%                   ]Exporting 40850 events: [=================================67%                  ]Exporting 40850 events: [=================================68%                  ]Exporting 40850 events: [==================================69%                 ]Exporting 40850 events: [==================================70%                 ]Exporting 40850 events: [===================================71%                ]Exporting 40850 events: [===================================72%                ]Exporting 40850 events: [====================================73%               ]Exporting 40850 events: [====================================74%               ]Exporting 40850 events: [=====================================75%              ]Exporting 40850 events: [======================================76%             ]Exporting 40850 events: [======================================77%             ]Exporting 40850 events: [=======================================78%            ]Exporting 40850 events: [=======================================79%            ]Exporting 40850 events: [========================================80%           ]Exporting 40850 events: [========================================81%           ]Exporting 40850 events: [=========================================82%          ]Exporting 40850 events: [=========================================83%          ]Exporting 40850 events: [==========================================84%         ]Exporting 40850 events: [==========================================85%         ]Exporting 40850 events: [===========================================86%        ]Exporting 40850 events: [===========================================87%        ]Exporting 40850 events: [============================================88%       ]Exporting 40850 events: [=============================================89%      ]Exporting 40850 events: [=============================================90%      ]Exporting 40850 events: [==============================================91%     ]Exporting 40850 events: [==============================================92%     ]Exporting 40850 events: [===============================================93%    ]Exporting 40850 events: [===============================================94%    ]Exporting 40850 events: [================================================95%   ]Exporting 40850 events: [================================================96%   ]Exporting 40850 events: [=================================================97%  ]Exporting 40850 events: [=================================================98%  ]Exporting 40850 events: [==================================================99% ]Exporting 40850 events: [==================================================100%]
 
 Exported successfully to
-/tmp/nsys-report-e2c4-218c-e57e-1a1a.txt
-Exporting 40750 events: [1%                                                    ]Exporting 40750 events: [2%                                                    ]Exporting 40750 events: [3%                                                    ]Exporting 40750 events: [4%                                                    ]Exporting 40750 events: [5%                                                    ]Exporting 40750 events: [=6%                                                   ]Exporting 40750 events: [=7%                                                   ]Exporting 40750 events: [==8%                                                  ]Exporting 40750 events: [==9%                                                  ]Exporting 40750 events: [==10%                                                 ]Exporting 40750 events: [==11%                                                 ]Exporting 40750 events: [===12%                                                ]Exporting 40750 events: [====13%                                               ]Exporting 40750 events: [====14%                                               ]Exporting 40750 events: [=====15%                                              ]Exporting 40750 events: [=====16%                                              ]Exporting 40750 events: [======17%                                             ]Exporting 40750 events: [======18%                                             ]Exporting 40750 events: [=======19%                                            ]Exporting 40750 events: [=======20%                                            ]Exporting 40750 events: [========21%                                           ]Exporting 40750 events: [========22%                                           ]Exporting 40750 events: [=========23%                                          ]Exporting 40750 events: [=========24%                                          ]Exporting 40750 events: [==========25%                                         ]Exporting 40750 events: [===========26%                                        ]Exporting 40750 events: [===========27%                                        ]Exporting 40750 events: [============28%                                       ]Exporting 40750 events: [============29%                                       ]Exporting 40750 events: [=============30%                                      ]Exporting 40750 events: [=============31%                                      ]Exporting 40750 events: [==============32%                                     ]Exporting 40750 events: [==============33%                                     ]Exporting 40750 events: [===============34%                                    ]Exporting 40750 events: [===============35%                                    ]Exporting 40750 events: [================36%                                   ]Exporting 40750 events: [================37%                                   ]Exporting 40750 events: [=================38%                                  ]Exporting 40750 events: [==================39%                                 ]Exporting 40750 events: [==================40%                                 ]Exporting 40750 events: [===================41%                                ]Exporting 40750 events: [===================42%                                ]Exporting 40750 events: [====================43%                               ]Exporting 40750 events: [====================44%                               ]Exporting 40750 events: [=====================45%                              ]Exporting 40750 events: [=====================46%                              ]Exporting 40750 events: [======================47%                             ]Exporting 40750 events: [======================48%                             ]Exporting 40750 events: [=======================49%                            ]Exporting 40750 events: [========================50%                           ]Exporting 40750 events: [========================51%                           ]Exporting 40750 events: [=========================52%                          ]Exporting 40750 events: [=========================53%                          ]Exporting 40750 events: [==========================54%                         ]Exporting 40750 events: [==========================55%                         ]Exporting 40750 events: [===========================56%                        ]Exporting 40750 events: [===========================57%                        ]Exporting 40750 events: [============================58%                       ]Exporting 40750 events: [============================59%                       ]Exporting 40750 events: [=============================60%                      ]Exporting 40750 events: [=============================61%                      ]Exporting 40750 events: [==============================62%                     ]Exporting 40750 events: [===============================63%                    ]Exporting 40750 events: [===============================64%                    ]Exporting 40750 events: [================================65%                   ]Exporting 40750 events: [================================66%                   ]Exporting 40750 events: [=================================67%                  ]Exporting 40750 events: [=================================68%                  ]Exporting 40750 events: [==================================69%                 ]Exporting 40750 events: [==================================70%                 ]Exporting 40750 events: [===================================71%                ]Exporting 40750 events: [===================================72%                ]Exporting 40750 events: [====================================73%               ]Exporting 40750 events: [====================================74%               ]Exporting 40750 events: [=====================================75%              ]Exporting 40750 events: [======================================76%             ]Exporting 40750 events: [======================================77%             ]Exporting 40750 events: [=======================================78%            ]Exporting 40750 events: [=======================================79%            ]Exporting 40750 events: [========================================80%           ]Exporting 40750 events: [========================================81%           ]Exporting 40750 events: [=========================================82%          ]Exporting 40750 events: [=========================================83%          ]Exporting 40750 events: [==========================================84%         ]Exporting 40750 events: [==========================================85%         ]Exporting 40750 events: [===========================================86%        ]Exporting 40750 events: [===========================================87%        ]Exporting 40750 events: [============================================88%       ]Exporting 40750 events: [=============================================89%      ]Exporting 40750 events: [=============================================90%      ]Exporting 40750 events: [==============================================91%     ]Exporting 40750 events: [==============================================92%     ]Exporting 40750 events: [===============================================93%    ]Exporting 40750 events: [===============================================94%    ]Exporting 40750 events: [================================================95%   ]Exporting 40750 events: [================================================96%   ]Exporting 40750 events: [=================================================97%  ]Exporting 40750 events: [=================================================98%  ]Exporting 40750 events: [==================================================99% ]Exporting 40750 events: [==================================================100%]
+/tmp/nsys-report-1e7d-1ac5-c8b6-0204.txt
+Exporting 40850 events: [1%                                                    ]Exporting 40850 events: [2%                                                    ]Exporting 40850 events: [3%                                                    ]Exporting 40850 events: [4%                                                    ]Exporting 40850 events: [5%                                                    ]Exporting 40850 events: [=6%                                                   ]Exporting 40850 events: [=7%                                                   ]Exporting 40850 events: [==8%                                                  ]Exporting 40850 events: [==9%                                                  ]Exporting 40850 events: [==10%                                                 ]Exporting 40850 events: [==11%                                                 ]Exporting 40850 events: [===12%                                                ]Exporting 40850 events: [====13%                                               ]Exporting 40850 events: [====14%                                               ]Exporting 40850 events: [=====15%                                              ]Exporting 40850 events: [=====16%                                              ]Exporting 40850 events: [======17%                                             ]Exporting 40850 events: [======18%                                             ]Exporting 40850 events: [=======19%                                            ]Exporting 40850 events: [=======20%                                            ]Exporting 40850 events: [========21%                                           ]Exporting 40850 events: [========22%                                           ]Exporting 40850 events: [=========23%                                          ]Exporting 40850 events: [=========24%                                          ]Exporting 40850 events: [==========25%                                         ]Exporting 40850 events: [===========26%                                        ]Exporting 40850 events: [===========27%                                        ]Exporting 40850 events: [============28%                                       ]Exporting 40850 events: [============29%                                       ]Exporting 40850 events: [=============30%                                      ]Exporting 40850 events: [=============31%                                      ]Exporting 40850 events: [==============32%                                     ]Exporting 40850 events: [==============33%                                     ]Exporting 40850 events: [===============34%                                    ]Exporting 40850 events: [===============35%                                    ]Exporting 40850 events: [================36%                                   ]Exporting 40850 events: [================37%                                   ]Exporting 40850 events: [=================38%                                  ]Exporting 40850 events: [==================39%                                 ]Exporting 40850 events: [==================40%                                 ]Exporting 40850 events: [===================41%                                ]Exporting 40850 events: [===================42%                                ]Exporting 40850 events: [====================43%                               ]Exporting 40850 events: [====================44%                               ]Exporting 40850 events: [=====================45%                              ]Exporting 40850 events: [=====================46%                              ]Exporting 40850 events: [======================47%                             ]Exporting 40850 events: [======================48%                             ]Exporting 40850 events: [=======================49%                            ]Exporting 40850 events: [========================50%                           ]Exporting 40850 events: [========================51%                           ]Exporting 40850 events: [=========================52%                          ]Exporting 40850 events: [=========================53%                          ]Exporting 40850 events: [==========================54%                         ]Exporting 40850 events: [==========================55%                         ]Exporting 40850 events: [===========================56%                        ]Exporting 40850 events: [===========================57%                        ]Exporting 40850 events: [============================58%                       ]Exporting 40850 events: [============================59%                       ]Exporting 40850 events: [=============================60%                      ]Exporting 40850 events: [=============================61%                      ]Exporting 40850 events: [==============================62%                     ]Exporting 40850 events: [===============================63%                    ]Exporting 40850 events: [===============================64%                    ]Exporting 40850 events: [================================65%                   ]Exporting 40850 events: [================================66%                   ]Exporting 40850 events: [=================================67%                  ]Exporting 40850 events: [=================================68%                  ]Exporting 40850 events: [==================================69%                 ]Exporting 40850 events: [==================================70%                 ]Exporting 40850 events: [===================================71%                ]Exporting 40850 events: [===================================72%                ]Exporting 40850 events: [====================================73%               ]Exporting 40850 events: [====================================74%               ]Exporting 40850 events: [=====================================75%              ]Exporting 40850 events: [======================================76%             ]Exporting 40850 events: [======================================77%             ]Exporting 40850 events: [=======================================78%            ]Exporting 40850 events: [=======================================79%            ]Exporting 40850 events: [========================================80%           ]Exporting 40850 events: [========================================81%           ]Exporting 40850 events: [=========================================82%          ]Exporting 40850 events: [=========================================83%          ]Exporting 40850 events: [==========================================84%         ]Exporting 40850 events: [==========================================85%         ]Exporting 40850 events: [===========================================86%        ]Exporting 40850 events: [===========================================87%        ]Exporting 40850 events: [============================================88%       ]Exporting 40850 events: [=============================================89%      ]Exporting 40850 events: [=============================================90%      ]Exporting 40850 events: [==============================================91%     ]Exporting 40850 events: [==============================================92%     ]Exporting 40850 events: [===============================================93%    ]Exporting 40850 events: [===============================================94%    ]Exporting 40850 events: [================================================95%   ]Exporting 40850 events: [================================================96%   ]Exporting 40850 events: [=================================================97%  ]Exporting 40850 events: [=================================================98%  ]Exporting 40850 events: [==================================================99% ]Exporting 40850 events: [==================================================100%]
 
 Exported successfully to
-/tmp/nsys-report-e2c4-218c-e57e-1a1a.json
+/tmp/nsys-report-1e7d-1ac5-c8b6-0204.json
 Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build/report1.qdrep"
 Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build/report1.txt"
 Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build/report1.json"

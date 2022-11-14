@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
     int gpus = 4;
     int iterationsPerGpu = 10;
     double eb = 1e-4;
-    char *mode = "mode=abs"; // "abs" or "r2r"
+    char *mode = "mode=r2r"; // "abs" or "r2r"
     string inputFilepath = "../../hurr-CLOUDf48-500x500x100";
     size_t nx = 500;
     size_t ny = 500;

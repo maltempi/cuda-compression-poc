@@ -1,23 +1,10 @@
--- The CUDA compiler identification is NVIDIA 11.2.152
--- The CXX compiler identification is GNU 9.4.0
--- Check for working CUDA compiler: /usr/local/cuda/bin/nvcc
--- Check for working CUDA compiler: /usr/local/cuda/bin/nvcc -- works
--- Detecting CUDA compiler ABI info
--- Detecting CUDA compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Found NVTX: /usr/local/cuda/include  
 -- Found NVIDIA Tools Extension (NVTX): /usr/local/cuda/include
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build
 Scanning dependencies of target ex-api
 [ 33%] Building CUDA object CMakeFiles/ex-api.dir/src/main.cu.o
-/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(113): warning: conversion from a string literal to "char *" is deprecated
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(115): warning: conversion from a string literal to "char *" is deprecated
 
 /opt/cusz-v100/API/analysis/../component/huffman_coarse.cuh(371): warning: variable "debug_header_entry" was declared but never referenced
           detected during:
@@ -50,9 +37,9 @@ Scanning dependencies of target ex-api
             instantiation of "void cusz::QualityViewer::print_metrics<Data>(cusz::Stat *, size_t, __nv_bool) [with Data=float]" 
 (92): here
             instantiation of "void cusz::QualityViewer::echo_metric_cpu(T *, T *, size_t, size_t, __nv_bool) [with T=float]" 
-/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(188): here
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(190): here
 
-/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(113): warning: conversion from a string literal to "char *" is deprecated
+/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/src/main.cu(115): warning: conversion from a string literal to "char *" is deprecated
 
 [ 66%] Linking CUDA device code CMakeFiles/ex-api.dir/cmake_device_link.o
 [100%] Linking CUDA executable ex-api
@@ -67,66 +54,54 @@ Input file path ../../hurr-CLOUDf48-500x500x100
 Dims: (500, 500, 100)
 --------------------------------
 Iteration #0; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 2062421[µs]
+Compression spent time 2128309[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7579[µs]
+DEcompression spent time 7695[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #1; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 238327[µs]
+Compression spent time 253595[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7803[µs]
+DEcompression spent time 7673[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #2; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 241269[µs]
+Compression spent time 267850[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8391[µs]
+DEcompression spent time 8490[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #3; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 251013[µs]
+Compression spent time 259311[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8200[µs]
+DEcompression spent time 8221[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #4; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9542[µs]
+Compression spent time 9880[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7648[µs]
+DEcompression spent time 8129[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #5; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9615[µs]
+Compression spent time 9726[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7732[µs]
+DEcompression spent time 7756[µs]
 Report:
 CPU Metrics:
 
@@ -195,55 +170,45 @@ quality metrics (using CPU checker):
 ----------------------------------------
 
 Iteration #6; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9487[µs]
+Compression spent time 9674[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7594[µs]
+DEcompression spent time 7756[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #7; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9527[µs]
+Compression spent time 9543[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7536[µs]
+DEcompression spent time 7655[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #8; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9590[µs]
+Compression spent time 9563[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7824[µs]
+DEcompression spent time 7689[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #9; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9584[µs]
+Compression spent time 9574[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7870[µs]
+DEcompression spent time 7617[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #10; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9505[µs]
+Compression spent time 9468[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7773[µs]
+DEcompression spent time 8066[µs]
 Report:
 CPU Metrics:
   [1m[31m                   data-len        data-byte         fp-type?                 [0m
@@ -311,55 +276,45 @@ quality metrics (using CPU checker):
 ----------------------------------------
 
 Iteration #11; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9495[µs]
+Compression spent time 9429[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7551[µs]
+DEcompression spent time 7722[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #12; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 10119[µs]
+Compression spent time 9538[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8023[µs]
-Report:
-CPU Metrics:
-
-----------------------------------------
-
-Iteration #13; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9500[µs]
-Starting decompression
-Decompressing 
 DEcompression spent time 7938[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
-Iteration #14; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9603[µs]
+Iteration #13; GPU #1
+Compression spent time 9502[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7882[µs]
+DEcompression spent time 7619[µs]
+Report:
+CPU Metrics:
+
+----------------------------------------
+
+Iteration #14; GPU #2
+Compression spent time 9464[µs]
+Starting decompression
+DEcompression spent time 7609[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #15; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9806[µs]
+Compression spent time 9420[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8055[µs]
+DEcompression spent time 7549[µs]
 Report:
 CPU Metrics:
                      25000000                4              yes
@@ -427,55 +382,45 @@ quality metrics (using CPU checker):
 ----------------------------------------
 
 Iteration #16; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9852[µs]
+Compression spent time 9507[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7938[µs]
+DEcompression spent time 7573[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #17; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9708[µs]
+Compression spent time 9495[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8007[µs]
+DEcompression spent time 7593[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #18; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 71129[µs]
+Compression spent time 9557[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 36061[µs]
+DEcompression spent time 7560[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #19; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 10747[µs]
+Compression spent time 9491[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7898[µs]
+DEcompression spent time 7858[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #20; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9678[µs]
+Compression spent time 9593[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7661[µs]
+DEcompression spent time 7948[µs]
 Report:
 CPU Metrics:
   [1m[31m                        min              max              rng              std[0m
@@ -543,55 +488,45 @@ quality metrics (using CPU checker):
 ----------------------------------------
 
 Iteration #21; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9615[µs]
+Compression spent time 9770[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7731[µs]
+DEcompression spent time 8011[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #22; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9621[µs]
+Compression spent time 9691[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7746[µs]
+DEcompression spent time 7899[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #23; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9495[µs]
+Compression spent time 9585[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7846[µs]
+DEcompression spent time 7782[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #24; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9805[µs]
+Compression spent time 9723[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8067[µs]
+DEcompression spent time 7829[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #25; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9724[µs]
+Compression spent time 9560[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8023[µs]
+DEcompression spent time 7736[µs]
 Report:
 CPU Metrics:
   origin                    0     0.0020479534     0.0020479534    5.2587476e-05
@@ -659,55 +594,45 @@ quality metrics (using CPU checker):
 ----------------------------------------
 
 Iteration #26; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9824[µs]
+Compression spent time 9584[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7931[µs]
+DEcompression spent time 7721[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #27; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 10131[µs]
+Compression spent time 9461[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8073[µs]
+DEcompression spent time 7704[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #28; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9943[µs]
+Compression spent time 9687[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7924[µs]
+DEcompression spent time 7760[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #29; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9612[µs]
+Compression spent time 9553[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7967[µs]
+DEcompression spent time 7728[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #30; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9673[µs]
+Compression spent time 9492[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7896[µs]
+DEcompression spent time 7920[µs]
 Report:
 CPU Metrics:
   eb-lossy                  0     0.0020479534     0.0020479534    5.2587555e-05
@@ -775,55 +700,45 @@ quality metrics (using CPU checker):
 ----------------------------------------
 
 Iteration #31; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9627[µs]
+Compression spent time 9418[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7930[µs]
+DEcompression spent time 8071[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #32; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9532[µs]
+Compression spent time 9723[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7715[µs]
+DEcompression spent time 8331[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #33; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 9594[µs]
+Compression spent time 9491[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7767[µs]
+DEcompression spent time 7747[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #34; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9770[µs]
+Compression spent time 9457[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7886[µs]
+DEcompression spent time 7730[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #35; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 9613[µs]
+Compression spent time 9437[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7877[µs]
+DEcompression spent time 7650[µs]
 Report:
 CPU Metrics:
   [1m[31m                    abs-val          abs-idx           pw-rel           VS-RNG[0m
@@ -891,44 +806,36 @@ quality metrics (using CPU checker):
 ----------------------------------------
 
 Iteration #36; GPU #0
-EB (after adjust_eb): 0.000000
-Compression spent time 9482[µs]
+Compression spent time 9471[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7848[µs]
+DEcompression spent time 7764[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #37; GPU #1
-EB (after adjust_eb): 0.000000
-Compression spent time 10865[µs]
+Compression spent time 9653[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8022[µs]
+DEcompression spent time 8024[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #38; GPU #2
-EB (after adjust_eb): 0.000000
-Compression spent time 9756[µs]
+Compression spent time 9695[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 8037[µs]
+DEcompression spent time 8017[µs]
 Report:
 CPU Metrics:
 
 ----------------------------------------
 
 Iteration #39; GPU #3
-EB (after adjust_eb): 0.000000
-Compression spent time 10031[µs]
+Compression spent time 9615[µs]
 Starting decompression
-Decompressing 
-DEcompression spent time 7990[µs]
+DEcompression spent time 7972[µs]
 Report:
 CPU Metrics:
 
@@ -987,19 +894,19 @@ quality metrics (using CPU checker):
   metrics           16.270004    1.9536256e-05       0.99999971        94.183173
 
 Processing events...
-Saving temporary "/tmp/nsys-report-7822-2705-9977-465e.qdstrm" file to disk...
+Saving temporary "/tmp/nsys-report-7fed-9ffb-e10d-44e7.qdstrm" file to disk...
 
 Creating final output files...
-Processing [0%                                                                 ]Processing [3%                                                                 ]Processing [==7%                                                               ]Processing [3%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [==6%                                                               ]Processing [=====12%                                                           ]Processing [===10%                                                             ]Processing [====9%                                                             ]Processing [===8%                                                              ]Processing [==7%                                                               ]Processing [==6%                                                               ]Processing [=5%                                                                ]Processing [==6%                                                               ]Processing [====11%                                                            ]Processing [=======15%                                                         ]Processing [==========20%                                                      ]Processing [=============25%                                                   ]Processing [=================30%                                               ]Processing [===================34%                                             ]Processing [=======================39%                                         ]Processing [=========================43%                                       ]Processing [=============================48%                                   ]Processing [===============================52%                                 ]Processing [===================================57%                             ]Processing [=====================================61%                           ]Processing [=========================================66%                       ]Processing [============================================71%                    ]Processing [===============================================75%                 ]Processing [==================================================80%              ]Processing [=====================================================85%           ]Processing [=======================================================88%         ]Processing [========================================================89%        ]Processing [===============================================================100%]
-Saved report file to "/tmp/nsys-report-7822-2705-9977-465e.qdrep"
-Exporting 42444 events: [1%                                                    ]Exporting 42444 events: [2%                                                    ]Exporting 42444 events: [3%                                                    ]Exporting 42444 events: [4%                                                    ]Exporting 42444 events: [5%                                                    ]Exporting 42444 events: [=6%                                                   ]Exporting 42444 events: [=7%                                                   ]Exporting 42444 events: [==8%                                                  ]Exporting 42444 events: [==9%                                                  ]Exporting 42444 events: [==10%                                                 ]Exporting 42444 events: [==11%                                                 ]Exporting 42444 events: [===12%                                                ]Exporting 42444 events: [====13%                                               ]Exporting 42444 events: [====14%                                               ]Exporting 42444 events: [=====15%                                              ]Exporting 42444 events: [=====16%                                              ]Exporting 42444 events: [======17%                                             ]Exporting 42444 events: [======18%                                             ]Exporting 42444 events: [=======19%                                            ]Exporting 42444 events: [=======20%                                            ]Exporting 42444 events: [========21%                                           ]Exporting 42444 events: [========22%                                           ]Exporting 42444 events: [=========23%                                          ]Exporting 42444 events: [=========24%                                          ]Exporting 42444 events: [==========25%                                         ]Exporting 42444 events: [===========26%                                        ]Exporting 42444 events: [===========27%                                        ]Exporting 42444 events: [============28%                                       ]Exporting 42444 events: [============29%                                       ]Exporting 42444 events: [=============30%                                      ]Exporting 42444 events: [=============31%                                      ]Exporting 42444 events: [==============32%                                     ]Exporting 42444 events: [==============33%                                     ]Exporting 42444 events: [===============34%                                    ]Exporting 42444 events: [===============35%                                    ]Exporting 42444 events: [================36%                                   ]Exporting 42444 events: [================37%                                   ]Exporting 42444 events: [=================38%                                  ]Exporting 42444 events: [==================39%                                 ]Exporting 42444 events: [==================40%                                 ]Exporting 42444 events: [===================41%                                ]Exporting 42444 events: [===================42%                                ]Exporting 42444 events: [====================43%                               ]Exporting 42444 events: [====================44%                               ]Exporting 42444 events: [=====================45%                              ]Exporting 42444 events: [=====================46%                              ]Exporting 42444 events: [======================47%                             ]Exporting 42444 events: [======================48%                             ]Exporting 42444 events: [=======================49%                            ]Exporting 42444 events: [========================50%                           ]Exporting 42444 events: [========================51%                           ]Exporting 42444 events: [=========================52%                          ]Exporting 42444 events: [=========================53%                          ]Exporting 42444 events: [==========================54%                         ]Exporting 42444 events: [==========================55%                         ]Exporting 42444 events: [===========================56%                        ]Exporting 42444 events: [===========================57%                        ]Exporting 42444 events: [============================58%                       ]Exporting 42444 events: [============================59%                       ]Exporting 42444 events: [=============================60%                      ]Exporting 42444 events: [=============================61%                      ]Exporting 42444 events: [==============================62%                     ]Exporting 42444 events: [===============================63%                    ]Exporting 42444 events: [===============================64%                    ]Exporting 42444 events: [================================65%                   ]Exporting 42444 events: [================================66%                   ]Exporting 42444 events: [=================================67%                  ]Exporting 42444 events: [=================================68%                  ]Exporting 42444 events: [==================================69%                 ]Exporting 42444 events: [==================================70%                 ]Exporting 42444 events: [===================================71%                ]Exporting 42444 events: [===================================72%                ]Exporting 42444 events: [====================================73%               ]Exporting 42444 events: [====================================74%               ]Exporting 42444 events: [=====================================75%              ]Exporting 42444 events: [======================================76%             ]Exporting 42444 events: [======================================77%             ]Exporting 42444 events: [=======================================78%            ]Exporting 42444 events: [=======================================79%            ]Exporting 42444 events: [========================================80%           ]Exporting 42444 events: [========================================81%           ]Exporting 42444 events: [=========================================82%          ]Exporting 42444 events: [=========================================83%          ]Exporting 42444 events: [==========================================84%         ]Exporting 42444 events: [==========================================85%         ]Exporting 42444 events: [===========================================86%        ]Exporting 42444 events: [===========================================87%        ]Exporting 42444 events: [============================================88%       ]Exporting 42444 events: [=============================================89%      ]Exporting 42444 events: [=============================================90%      ]Exporting 42444 events: [==============================================91%     ]Exporting 42444 events: [==============================================92%     ]Exporting 42444 events: [===============================================93%    ]Exporting 42444 events: [===============================================94%    ]Exporting 42444 events: [================================================95%   ]Exporting 42444 events: [================================================96%   ]Exporting 42444 events: [=================================================97%  ]Exporting 42444 events: [=================================================98%  ]Exporting 42444 events: [==================================================99% ]Exporting 42444 events: [==================================================100%]
+Processing [0%                                                                 ]Processing [3%                                                                 ]Processing [==6%                                                               ]Processing [3%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [2%                                                                 ]Processing [1%                                                                 ]Processing [==7%                                                               ]Processing [=====13%                                                           ]Processing [=====12%                                                           ]Processing [===10%                                                             ]Processing [====9%                                                             ]Processing [===8%                                                              ]Processing [==7%                                                               ]Processing [==6%                                                               ]Processing [=5%                                                                ]Processing [==6%                                                               ]Processing [===10%                                                             ]Processing [=======15%                                                         ]Processing [=========19%                                                       ]Processing [=============24%                                                   ]Processing [================29%                                                ]Processing [===================34%                                             ]Processing [======================38%                                          ]Processing [=========================43%                                       ]Processing [============================47%                                    ]Processing [===============================52%                                 ]Processing [==================================56%                              ]Processing [=====================================61%                           ]Processing [=========================================66%                       ]Processing [===========================================70%                     ]Processing [===============================================75%                 ]Processing [==================================================80%              ]Processing [=====================================================85%           ]Processing [=======================================================88%         ]Processing [===============================================================100%]
+Saved report file to "/tmp/nsys-report-7fed-9ffb-e10d-44e7.qdrep"
+Exporting 42310 events: [1%                                                    ]Exporting 42310 events: [2%                                                    ]Exporting 42310 events: [3%                                                    ]Exporting 42310 events: [4%                                                    ]Exporting 42310 events: [5%                                                    ]Exporting 42310 events: [=6%                                                   ]Exporting 42310 events: [=7%                                                   ]Exporting 42310 events: [==8%                                                  ]Exporting 42310 events: [==9%                                                  ]Exporting 42310 events: [==10%                                                 ]Exporting 42310 events: [==11%                                                 ]Exporting 42310 events: [===12%                                                ]Exporting 42310 events: [====13%                                               ]Exporting 42310 events: [====14%                                               ]Exporting 42310 events: [=====15%                                              ]Exporting 42310 events: [=====16%                                              ]Exporting 42310 events: [======17%                                             ]Exporting 42310 events: [======18%                                             ]Exporting 42310 events: [=======19%                                            ]Exporting 42310 events: [=======20%                                            ]Exporting 42310 events: [========21%                                           ]Exporting 42310 events: [========22%                                           ]Exporting 42310 events: [=========23%                                          ]Exporting 42310 events: [=========24%                                          ]Exporting 42310 events: [==========25%                                         ]Exporting 42310 events: [===========26%                                        ]Exporting 42310 events: [===========27%                                        ]Exporting 42310 events: [============28%                                       ]Exporting 42310 events: [============29%                                       ]Exporting 42310 events: [=============30%                                      ]Exporting 42310 events: [=============31%                                      ]Exporting 42310 events: [==============32%                                     ]Exporting 42310 events: [==============33%                                     ]Exporting 42310 events: [===============34%                                    ]Exporting 42310 events: [===============35%                                    ]Exporting 42310 events: [================36%                                   ]Exporting 42310 events: [================37%                                   ]Exporting 42310 events: [=================38%                                  ]Exporting 42310 events: [==================39%                                 ]Exporting 42310 events: [==================40%                                 ]Exporting 42310 events: [===================41%                                ]Exporting 42310 events: [===================42%                                ]Exporting 42310 events: [====================43%                               ]Exporting 42310 events: [====================44%                               ]Exporting 42310 events: [=====================45%                              ]Exporting 42310 events: [=====================46%                              ]Exporting 42310 events: [======================47%                             ]Exporting 42310 events: [======================48%                             ]Exporting 42310 events: [=======================49%                            ]Exporting 42310 events: [========================50%                           ]Exporting 42310 events: [========================51%                           ]Exporting 42310 events: [=========================52%                          ]Exporting 42310 events: [=========================53%                          ]Exporting 42310 events: [==========================54%                         ]Exporting 42310 events: [==========================55%                         ]Exporting 42310 events: [===========================56%                        ]Exporting 42310 events: [===========================57%                        ]Exporting 42310 events: [============================58%                       ]Exporting 42310 events: [============================59%                       ]Exporting 42310 events: [=============================60%                      ]Exporting 42310 events: [=============================61%                      ]Exporting 42310 events: [==============================62%                     ]Exporting 42310 events: [===============================63%                    ]Exporting 42310 events: [===============================64%                    ]Exporting 42310 events: [================================65%                   ]Exporting 42310 events: [================================66%                   ]Exporting 42310 events: [=================================67%                  ]Exporting 42310 events: [=================================68%                  ]Exporting 42310 events: [==================================69%                 ]Exporting 42310 events: [==================================70%                 ]Exporting 42310 events: [===================================71%                ]Exporting 42310 events: [===================================72%                ]Exporting 42310 events: [====================================73%               ]Exporting 42310 events: [====================================74%               ]Exporting 42310 events: [=====================================75%              ]Exporting 42310 events: [======================================76%             ]Exporting 42310 events: [======================================77%             ]Exporting 42310 events: [=======================================78%            ]Exporting 42310 events: [=======================================79%            ]Exporting 42310 events: [========================================80%           ]Exporting 42310 events: [========================================81%           ]Exporting 42310 events: [=========================================82%          ]Exporting 42310 events: [=========================================83%          ]Exporting 42310 events: [==========================================84%         ]Exporting 42310 events: [==========================================85%         ]Exporting 42310 events: [===========================================86%        ]Exporting 42310 events: [===========================================87%        ]Exporting 42310 events: [============================================88%       ]Exporting 42310 events: [=============================================89%      ]Exporting 42310 events: [=============================================90%      ]Exporting 42310 events: [==============================================91%     ]Exporting 42310 events: [==============================================92%     ]Exporting 42310 events: [===============================================93%    ]Exporting 42310 events: [===============================================94%    ]Exporting 42310 events: [================================================95%   ]Exporting 42310 events: [================================================96%   ]Exporting 42310 events: [=================================================97%  ]Exporting 42310 events: [=================================================98%  ]Exporting 42310 events: [==================================================99% ]Exporting 42310 events: [==================================================100%]
 
 Exported successfully to
-/tmp/nsys-report-7822-2705-9977-465e.txt
-Exporting 42444 events: [1%                                                    ]Exporting 42444 events: [2%                                                    ]Exporting 42444 events: [3%                                                    ]Exporting 42444 events: [4%                                                    ]Exporting 42444 events: [5%                                                    ]Exporting 42444 events: [=6%                                                   ]Exporting 42444 events: [=7%                                                   ]Exporting 42444 events: [==8%                                                  ]Exporting 42444 events: [==9%                                                  ]Exporting 42444 events: [==10%                                                 ]Exporting 42444 events: [==11%                                                 ]Exporting 42444 events: [===12%                                                ]Exporting 42444 events: [====13%                                               ]Exporting 42444 events: [====14%                                               ]Exporting 42444 events: [=====15%                                              ]Exporting 42444 events: [=====16%                                              ]Exporting 42444 events: [======17%                                             ]Exporting 42444 events: [======18%                                             ]Exporting 42444 events: [=======19%                                            ]Exporting 42444 events: [=======20%                                            ]Exporting 42444 events: [========21%                                           ]Exporting 42444 events: [========22%                                           ]Exporting 42444 events: [=========23%                                          ]Exporting 42444 events: [=========24%                                          ]Exporting 42444 events: [==========25%                                         ]Exporting 42444 events: [===========26%                                        ]Exporting 42444 events: [===========27%                                        ]Exporting 42444 events: [============28%                                       ]Exporting 42444 events: [============29%                                       ]Exporting 42444 events: [=============30%                                      ]Exporting 42444 events: [=============31%                                      ]Exporting 42444 events: [==============32%                                     ]Exporting 42444 events: [==============33%                                     ]Exporting 42444 events: [===============34%                                    ]Exporting 42444 events: [===============35%                                    ]Exporting 42444 events: [================36%                                   ]Exporting 42444 events: [================37%                                   ]Exporting 42444 events: [=================38%                                  ]Exporting 42444 events: [==================39%                                 ]Exporting 42444 events: [==================40%                                 ]Exporting 42444 events: [===================41%                                ]Exporting 42444 events: [===================42%                                ]Exporting 42444 events: [====================43%                               ]Exporting 42444 events: [====================44%                               ]Exporting 42444 events: [=====================45%                              ]Exporting 42444 events: [=====================46%                              ]Exporting 42444 events: [======================47%                             ]Exporting 42444 events: [======================48%                             ]Exporting 42444 events: [=======================49%                            ]Exporting 42444 events: [========================50%                           ]Exporting 42444 events: [========================51%                           ]Exporting 42444 events: [=========================52%                          ]Exporting 42444 events: [=========================53%                          ]Exporting 42444 events: [==========================54%                         ]Exporting 42444 events: [==========================55%                         ]Exporting 42444 events: [===========================56%                        ]Exporting 42444 events: [===========================57%                        ]Exporting 42444 events: [============================58%                       ]Exporting 42444 events: [============================59%                       ]Exporting 42444 events: [=============================60%                      ]Exporting 42444 events: [=============================61%                      ]Exporting 42444 events: [==============================62%                     ]Exporting 42444 events: [===============================63%                    ]Exporting 42444 events: [===============================64%                    ]Exporting 42444 events: [================================65%                   ]Exporting 42444 events: [================================66%                   ]Exporting 42444 events: [=================================67%                  ]Exporting 42444 events: [=================================68%                  ]Exporting 42444 events: [==================================69%                 ]Exporting 42444 events: [==================================70%                 ]Exporting 42444 events: [===================================71%                ]Exporting 42444 events: [===================================72%                ]Exporting 42444 events: [====================================73%               ]Exporting 42444 events: [====================================74%               ]Exporting 42444 events: [=====================================75%              ]Exporting 42444 events: [======================================76%             ]Exporting 42444 events: [======================================77%             ]Exporting 42444 events: [=======================================78%            ]Exporting 42444 events: [=======================================79%            ]Exporting 42444 events: [========================================80%           ]Exporting 42444 events: [========================================81%           ]Exporting 42444 events: [=========================================82%          ]Exporting 42444 events: [=========================================83%          ]Exporting 42444 events: [==========================================84%         ]Exporting 42444 events: [==========================================85%         ]Exporting 42444 events: [===========================================86%        ]Exporting 42444 events: [===========================================87%        ]Exporting 42444 events: [============================================88%       ]Exporting 42444 events: [=============================================89%      ]Exporting 42444 events: [=============================================90%      ]Exporting 42444 events: [==============================================91%     ]Exporting 42444 events: [==============================================92%     ]Exporting 42444 events: [===============================================93%    ]Exporting 42444 events: [===============================================94%    ]Exporting 42444 events: [================================================95%   ]Exporting 42444 events: [================================================96%   ]Exporting 42444 events: [=================================================97%  ]Exporting 42444 events: [=================================================98%  ]Exporting 42444 events: [==================================================99% ]Exporting 42444 events: [==================================================100%]
+/tmp/nsys-report-7fed-9ffb-e10d-44e7.txt
+Exporting 42310 events: [1%                                                    ]Exporting 42310 events: [2%                                                    ]Exporting 42310 events: [3%                                                    ]Exporting 42310 events: [4%                                                    ]Exporting 42310 events: [5%                                                    ]Exporting 42310 events: [=6%                                                   ]Exporting 42310 events: [=7%                                                   ]Exporting 42310 events: [==8%                                                  ]Exporting 42310 events: [==9%                                                  ]Exporting 42310 events: [==10%                                                 ]Exporting 42310 events: [==11%                                                 ]Exporting 42310 events: [===12%                                                ]Exporting 42310 events: [====13%                                               ]Exporting 42310 events: [====14%                                               ]Exporting 42310 events: [=====15%                                              ]Exporting 42310 events: [=====16%                                              ]Exporting 42310 events: [======17%                                             ]Exporting 42310 events: [======18%                                             ]Exporting 42310 events: [=======19%                                            ]Exporting 42310 events: [=======20%                                            ]Exporting 42310 events: [========21%                                           ]Exporting 42310 events: [========22%                                           ]Exporting 42310 events: [=========23%                                          ]Exporting 42310 events: [=========24%                                          ]Exporting 42310 events: [==========25%                                         ]Exporting 42310 events: [===========26%                                        ]Exporting 42310 events: [===========27%                                        ]Exporting 42310 events: [============28%                                       ]Exporting 42310 events: [============29%                                       ]Exporting 42310 events: [=============30%                                      ]Exporting 42310 events: [=============31%                                      ]Exporting 42310 events: [==============32%                                     ]Exporting 42310 events: [==============33%                                     ]Exporting 42310 events: [===============34%                                    ]Exporting 42310 events: [===============35%                                    ]Exporting 42310 events: [================36%                                   ]Exporting 42310 events: [================37%                                   ]Exporting 42310 events: [=================38%                                  ]Exporting 42310 events: [==================39%                                 ]Exporting 42310 events: [==================40%                                 ]Exporting 42310 events: [===================41%                                ]Exporting 42310 events: [===================42%                                ]Exporting 42310 events: [====================43%                               ]Exporting 42310 events: [====================44%                               ]Exporting 42310 events: [=====================45%                              ]Exporting 42310 events: [=====================46%                              ]Exporting 42310 events: [======================47%                             ]Exporting 42310 events: [======================48%                             ]Exporting 42310 events: [=======================49%                            ]Exporting 42310 events: [========================50%                           ]Exporting 42310 events: [========================51%                           ]Exporting 42310 events: [=========================52%                          ]Exporting 42310 events: [=========================53%                          ]Exporting 42310 events: [==========================54%                         ]Exporting 42310 events: [==========================55%                         ]Exporting 42310 events: [===========================56%                        ]Exporting 42310 events: [===========================57%                        ]Exporting 42310 events: [============================58%                       ]Exporting 42310 events: [============================59%                       ]Exporting 42310 events: [=============================60%                      ]Exporting 42310 events: [=============================61%                      ]Exporting 42310 events: [==============================62%                     ]Exporting 42310 events: [===============================63%                    ]Exporting 42310 events: [===============================64%                    ]Exporting 42310 events: [================================65%                   ]Exporting 42310 events: [================================66%                   ]Exporting 42310 events: [=================================67%                  ]Exporting 42310 events: [=================================68%                  ]Exporting 42310 events: [==================================69%                 ]Exporting 42310 events: [==================================70%                 ]Exporting 42310 events: [===================================71%                ]Exporting 42310 events: [===================================72%                ]Exporting 42310 events: [====================================73%               ]Exporting 42310 events: [====================================74%               ]Exporting 42310 events: [=====================================75%              ]Exporting 42310 events: [======================================76%             ]Exporting 42310 events: [======================================77%             ]Exporting 42310 events: [=======================================78%            ]Exporting 42310 events: [=======================================79%            ]Exporting 42310 events: [========================================80%           ]Exporting 42310 events: [========================================81%           ]Exporting 42310 events: [=========================================82%          ]Exporting 42310 events: [=========================================83%          ]Exporting 42310 events: [==========================================84%         ]Exporting 42310 events: [==========================================85%         ]Exporting 42310 events: [===========================================86%        ]Exporting 42310 events: [===========================================87%        ]Exporting 42310 events: [============================================88%       ]Exporting 42310 events: [=============================================89%      ]Exporting 42310 events: [=============================================90%      ]Exporting 42310 events: [==============================================91%     ]Exporting 42310 events: [==============================================92%     ]Exporting 42310 events: [===============================================93%    ]Exporting 42310 events: [===============================================94%    ]Exporting 42310 events: [================================================95%   ]Exporting 42310 events: [================================================96%   ]Exporting 42310 events: [=================================================97%  ]Exporting 42310 events: [=================================================98%  ]Exporting 42310 events: [==================================================99% ]Exporting 42310 events: [==================================================100%]
 
 Exported successfully to
-/tmp/nsys-report-7822-2705-9977-465e.json
+/tmp/nsys-report-7fed-9ffb-e10d-44e7.json
 Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build/report1.qdrep"
 Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build/report1.txt"
 Report file moved to "/home/thiago.maltempi/workspace/cuda-compression-poc/cusz/build/report1.json"
