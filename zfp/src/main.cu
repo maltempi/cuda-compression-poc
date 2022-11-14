@@ -267,24 +267,8 @@ int main(int argc, char *argv[])
   size_t ny = 500;
   size_t nz = 100;
   bool dumpData = false;
+  bool printReport = true;
   int rate = 8;
-
-  if (argc < 8 && argc > 1)
-  {
-    cout << "Wrong number of parameters. Expected parameters:\n";
-    cout << "ex-api ${rate} ${filepath} ${dim_x} ${dim_y} ${dim_z} ${number_of_gpus} ${iterationsPerGpu}";
-    return -1;
-  }
-  else if (argc > 1)
-  {
-    rate = std::atoi(argv[1]);
-    inputFilepath = argv[2];
-    nx = std::atoi(argv[3]);
-    ny = std::atoi(argv[4]);
-    nz = std::atoi(argv[5]);
-    gpus = std::atoi(argv[6]);
-    iterationsPerGpu = std::atoi(argv[7]);
-  }
 
   fprintf(stderr, "----------ZFP-------------------\n");
   fprintf(stderr, "Parameters\n");
@@ -311,31 +295,24 @@ int main(int argc, char *argv[])
     cudaMalloc(&data->d_uncompressed_data, len * sizeof(float));
     cudaMemcpy(data->d_uncompressed_data, data->h_uncompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
 
-    chrono::steady_clock::time_point begin;
-    chrono::steady_clock::time_point end;
-
-    begin = std::chrono::steady_clock::now();
     NVTX_PUSH_RANGE("START_COMPRESSION_METHOD", MY_ORANGE);
     size_t compressed_data_size = compress(data, nx, ny, nz, rate);
     NVTX_POP_RANGE();
-    end = std::chrono::steady_clock::now();
-    fprintf(stderr, "Compression spent time %li[µs]\n", chrono::duration_cast<chrono::microseconds>(end - begin).count());
-    checkIfInputIsCorrupted(data->h_uncompressed_data, data->d_uncompressed_data, len);
-
-    begin = std::chrono::steady_clock::now();
+    
     NVTX_PUSH_RANGE("START_DECOMPRESSION_METHOD", MY_ORANGE);
     cudaMalloc(&data->d_decompressed_data, len * sizeof(float));
     decompress(data, compressed_data_size, nx, ny, nz, rate);
     NVTX_POP_RANGE();
-    end = std::chrono::steady_clock::now();
-    fprintf(stderr, "DEcompression spent time %li[µs]\n", chrono::duration_cast<chrono::microseconds>(end - begin).count());
 
-    cudaFreeHost(&data->h_decompressed_data);
-    cudaMallocHost(&data->h_decompressed_data, len * sizeof(float));
-    cudaMemcpy(data->h_decompressed_data, data->d_decompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
-    print_error(data->h_uncompressed_data, data->h_decompressed_data, zfp_type_float, len);
+    if (printReport)
+    {
+      checkIfInputIsCorrupted(data->h_uncompressed_data, data->d_uncompressed_data, len);
+      cudaMallocHost(&data->h_decompressed_data, len * sizeof(float));
+      cudaMemcpy(data->h_decompressed_data, data->d_decompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
+      print_error(data->h_uncompressed_data, data->h_decompressed_data, zfp_type_float, len);
+    }
 
-    if (dumpData == true)
+    if (dumpData)
     {
       exportData("./decompressed-from-api", data->h_decompressed_data, sizeof(float), len);
       cudaMallocHost(&data->h_compressed_data, compressed_data_size);
