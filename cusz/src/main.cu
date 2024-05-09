@@ -12,12 +12,12 @@
 #include <math.h>
 #include "nvtx.cuh"
 
-#include "api.hh"
+#include "cusz.h"
+#include "cusz/type.h"
+#include "utils/io.hh"
+#include "utils/viewer.hh"
 
-#include "cli/quality_viewer.hh"
-#include "cli/timerecord_viewer.hh"
 
-using Compressor = typename cusz::Framework<float>::LorenzoFeaturedCompressor;
 
 //#define MIN(x, y) ((x) < (y) ? (x) : (y))
 #define MAX(x, y) ((x) > (y) ? (x) : (y))
@@ -34,7 +34,7 @@ typedef struct
     int device;
     size_t uncompressed_len;
     size_t compressed_len;
-    cusz::Header header;
+    cusz_header  header;
     char *mode;
 } Data_t;
 
@@ -43,23 +43,36 @@ void compress(Data_t *data, size_t nx, size_t ny, size_t nz, cudaStream_t stream
     size_t uncompressed_alloclen = data->uncompressed_len * 1.03;
 
     // Defining cusz stuff
-    Compressor *compressor = new Compressor;
-    cusz::TimeRecord timerecord;
-    cusz::Context *ctx = new cusz::Context();
-    ctx->set_len(nx, ny, nz, 1).set_eb(data->eb).set_control_string(data->mode);
-    ctx->device = data->device;
+    cusz_framework* framework = cusz_default_framework();
+
+    cusz_compressor* compressor = cusz_create(framework, FP32);
+    cusz_config*     config     = new cusz_config{.eb = 2.4e-4, .mode = Rel};
+    // x, y, z, w and the padding factor (slightly > 1.00)
+    cusz_len uncomp_len = cusz_len{nx, ny, nz, 1, 1.03}; 
+    cusz_len decomp_len = uncomp_len;
+
+    // compression outputs
+    uint8_t*    exposed_compressed;
+    uint8_t*    compressed;
+    size_t      compressed_len;
 
     float *d_uncompressed_copy;
     cudaMalloc(&d_uncompressed_copy, sizeof(float) * nx * ny * nz);
     cudaMemcpy(d_uncompressed_copy, data->d_uncompressed_data, sizeof(float) * nx * ny * nz, cudaMemcpyHostToDevice);
 
-    cusz::Context::adjust_eb(ctx, d_uncompressed_copy);
+    psz::TimeRecord timerecord;
 
     NVTX_PUSH_RANGE("CUSZ_COMPRESS", MY_YELLOW);
-    cusz::core_compress(compressor, ctx,                                             // compressor & config
-                        d_uncompressed_copy, uncompressed_alloclen,                  // input
-                        data->d_compressed_data, data->compressed_len, data->header, // output
-                        stream, &timerecord);
+    cusz_compress(compressor, 
+                  config, 
+                  d_uncompressed_copy, 
+                  uncomp_len, 
+                  data->d_compressed_data, 
+                  data->compressed_len, 
+                  data->header, 
+                  (void*)&timerecord, 
+                  stream
+    );
     NVTX_POP_RANGE();
 
     cudaFree(d_uncompressed_copy);
@@ -68,22 +81,15 @@ void compress(Data_t *data, size_t nx, size_t ny, size_t nz, cudaStream_t stream
 
 void decompress(Data_t *data, cudaStream_t stream)
 {
-    auto compressor = new Compressor;
-    cusz::TimeRecord timerecord;
     size_t uncompressed_alloclen = data->uncompressed_len * 1.03;
-
     cudaMalloc(&data->d_uncompressed_data, sizeof(float) * uncompressed_alloclen);
+    psz::TimeRecord timerecord;
+    cusz_framework* framework = cusz_default_framework();
+    cusz_compressor* compressor = cusz_create(framework, FP32);
 
     NVTX_PUSH_RANGE("CUSZ_DECOMPRESS", MY_YELLOW);
-    cusz::core_decompress(compressor, &data->header,
-                          data->d_compressed_data,   // input
-                          data->compressed_len,      // input len
-                          data->d_decompressed_data, // output
-                          uncompressed_alloclen,     // output len
-                          stream, &timerecord);
+    cusz_decompress(comp, &data->header, data->d_compressed_data, data->compressed_len, data->d_decompressed_data, uncompressed_alloclen, (void*)&timerecord, stream);
     NVTX_POP_RANGE();
-
-    // cusz::TimeRecordViewer::view_decompression(&timerecord, len * sizeof(float));
 
     delete compressor;
 }
@@ -187,7 +193,7 @@ int main(int argc, char *argv[])
             cudaMemcpy(data->h_decompressed_data, data->d_decompressed_data, len * sizeof(float), cudaMemcpyHostToDevice);
 
             fprintf(stderr, "CPU Metrics:\n");
-            cusz::QualityViewer::echo_metric_cpu(data->h_decompressed_data, data->h_uncompressed_data, len, size_t(data->compressed_len), false);
+            psz::eval_dataquality_gpu(data->d_decompressed_data, data->d_uncompressed_data, len, size_t(data->compressed_len));
         }
 
         cudaFreeHost(&data->h_decompressed_data);

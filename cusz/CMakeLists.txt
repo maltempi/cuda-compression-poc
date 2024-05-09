@@ -19,7 +19,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
 enable_language(CUDA)
 
-include_directories(/opt/cusz-v100/API)
+include_directories(/opt/cusz/include/cusz)
 
 set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --extended-lambda --expt-relaxed-constexpr -Wno-deprecated-declarations")
 
@@ -46,11 +46,7 @@ endif()
 add_executable(ex-api src/main.cu)
 target_link_libraries(ex-api
 	PUBLIC
-	/opt/cusz-v100/Release/libcompress.a 
-	/opt/cusz-v100/Release/libargp.a 
-	/opt/cusz-v100/Release/libpq.a 
-	/opt/cusz-v100/Release/libhuff.a 
-	/opt/cusz-v100/Release/libsp.a
+	/opt/cusz/lib/libcusz.o
   -lnvToolsExt
 	-lcuda
 	-lcusparse)

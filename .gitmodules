@@ -1,0 +1,3 @@
+[submodule "cusz/cuSZ"]
+	path = cusz/cuSZ
+	url = git@github.com:szcompressor/cuSZ.git
